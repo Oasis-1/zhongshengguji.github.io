@@ -20,19 +20,19 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="笔记Mysq索引http:&#x2F;&#x2F;blog.codinglabs.org&#x2F;articles&#x2F;theory-of-mysql-index.html 最能体会到算法的奇妙的例子https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_19782019&#x2F;article&#x2F;details&#x2F;85621386 小工具md自动添加序号https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;bf52cb523aaf bing壁纸爬">
+  <meta name="description" content="1逻辑 判断 if 循环 foreach  事件 浏览器事件：window doucment dom事件：增删 遍历 修改节点元素内容   jquery vue react  视图 html css  通信 ajax  前端大纲Soc：关注度分离原则 html+css+js 网络通信：axios 页面跳转：vue-router 状态管理：vuex Vue-iec html 略css SASS:基于">
 <meta property="og:type" content="article">
 <meta property="og:title" content="枫叶苑">
-<meta property="og:url" content="http://example.com/2021/11/12/%E9%AB%98%E8%B4%A8%E9%87%8F%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:url" content="http://example.com/2021/11/12/vue/index.html">
 <meta property="og:site_name" content="枫叶苑">
-<meta property="og:description" content="笔记Mysq索引http:&#x2F;&#x2F;blog.codinglabs.org&#x2F;articles&#x2F;theory-of-mysql-index.html 最能体会到算法的奇妙的例子https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_19782019&#x2F;article&#x2F;details&#x2F;85621386 小工具md自动添加序号https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;bf52cb523aaf bing壁纸爬">
+<meta property="og:description" content="1逻辑 判断 if 循环 foreach  事件 浏览器事件：window doucment dom事件：增删 遍历 修改节点元素内容   jquery vue react  视图 html css  通信 ajax  前端大纲Soc：关注度分离原则 html+css+js 网络通信：axios 页面跳转：vue-router 状态管理：vuex Vue-iec html 略css SASS:基于">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-11-12T12:21:59.960Z">
-<meta property="article:modified_time" content="2021-10-23T04:45:23.550Z">
+<meta property="article:published_time" content="2021-11-12T12:27:28.653Z">
+<meta property="article:modified_time" content="2021-10-23T09:31:15.561Z">
 <meta property="article:author" content="王一M">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2021/11/12/%E9%AB%98%E8%B4%A8%E9%87%8F%E7%AC%94%E8%AE%B0/">
+<link rel="canonical" href="http://example.com/2021/11/12/vue/">
 
 
 <script id="page-configurations">
@@ -170,7 +170,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/12/%E9%AB%98%E8%B4%A8%E9%87%8F%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/12/vue/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/1.gif">
@@ -193,14 +193,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-11-12 20:21:59" itemprop="dateCreated datePublished" datetime="2021-11-12T20:21:59+08:00">2021-11-12</time>
+              <time title="创建时间：2021-11-12 20:27:28" itemprop="dateCreated datePublished" datetime="2021-11-12T20:27:28+08:00">2021-11-12</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-23 12:45:23" itemprop="dateModified" datetime="2021-10-23T12:45:23+08:00">2021-10-23</time>
+                <time title="修改时间：2021-10-23 17:31:15" itemprop="dateModified" datetime="2021-10-23T17:31:15+08:00">2021-10-23</time>
               </span>
 
           
@@ -214,14 +214,54 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="笔记"><a href="#笔记" class="headerlink" title="笔记"></a>笔记</h1><h2 id="Mysq索引"><a href="#Mysq索引" class="headerlink" title="Mysq索引"></a>Mysq索引</h2><p><a target="_blank" rel="noopener" href="http://blog.codinglabs.org/articles/theory-of-mysql-index.html">http://blog.codinglabs.org/articles/theory-of-mysql-index.html</a></p>
-<h2 id="最能体会到算法的奇妙的例子"><a href="#最能体会到算法的奇妙的例子" class="headerlink" title="最能体会到算法的奇妙的例子"></a>最能体会到算法的奇妙的例子</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_19782019/article/details/85621386">https://blog.csdn.net/qq_19782019/article/details/85621386</a></p>
-<h1 id="小工具"><a href="#小工具" class="headerlink" title="小工具"></a>小工具</h1><h2 id="md自动添加序号"><a href="#md自动添加序号" class="headerlink" title="md自动添加序号"></a>md自动添加序号</h2><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/bf52cb523aaf">https://www.jianshu.com/p/bf52cb523aaf</a></p>
-<h2 id="bing壁纸爬取后再自动切换"><a href="#bing壁纸爬取后再自动切换" class="headerlink" title="bing壁纸爬取后再自动切换"></a>bing壁纸爬取后再自动切换</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/65241066">https://zhuanlan.zhihu.com/p/65241066</a></p>
-<h2 id="github访问"><a href="#github访问" class="headerlink" title="github访问"></a>github访问</h2><p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000023735638">https://segmentfault.com/a/1190000023735638</a></p>
-<h2 id="分页条"><a href="#分页条" class="headerlink" title="分页条"></a>分页条</h2><p><a target="_blank" rel="noopener" href="http://smallblog.cn/blog/37">http://smallblog.cn/blog/37</a></p>
-<h2 id="小米卸载系统应用（ADB）"><a href="#小米卸载系统应用（ADB）" class="headerlink" title="小米卸载系统应用（ADB）"></a>小米卸载系统应用（ADB）</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/shawfwang/article/details/104083739">https://blog.csdn.net/shawfwang/article/details/104083739</a></p>
-<h2 id="竞赛题型分类"><a href="#竞赛题型分类" class="headerlink" title="竞赛题型分类"></a>竞赛题型分类</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u011590573/article/details/81414487">https://blog.csdn.net/u011590573/article/details/81414487</a></p>
+        <h1 id="1"><a href="#1" class="headerlink" title="1"></a>1</h1><h2 id="逻辑"><a href="#逻辑" class="headerlink" title="逻辑"></a>逻辑</h2><ul>
+<li>判断 if</li>
+<li>循环 foreach</li>
+</ul>
+<h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><ul>
+<li>浏览器事件：window doucment</li>
+<li>dom事件：增删 遍历 修改节点元素内容</li>
+</ul>
+<ul>
+<li>jquery</li>
+<li>vue</li>
+<li>react</li>
+</ul>
+<h2 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h2><ul>
+<li>html</li>
+<li>css</li>
+</ul>
+<h2 id="通信"><a href="#通信" class="headerlink" title="通信"></a>通信</h2><ul>
+<li>ajax</li>
+</ul>
+<h1 id="前端大纲"><a href="#前端大纲" class="headerlink" title="前端大纲"></a>前端大纲</h1><p>Soc：关注度分离原则</p>
+<p>html+css+js</p>
+<p>网络通信：axios</p>
+<p>页面跳转：vue-router</p>
+<p>状态管理：vuex</p>
+<p>Vue-iec</p>
+<h2 id="html-略"><a href="#html-略" class="headerlink" title="html 略"></a>html 略</h2><h2 id="css"><a href="#css" class="headerlink" title="css"></a>css</h2><ul>
+<li>SASS:基于Ruby，通过服务端处理，功能强大。解析效率高。需要学习Ruby语言，上手难度高于LESS。</li>
+<li>LESS:基于NodeJS，通过客户端处理，使用简单。功能比 SASS简单，解析效率也低于SASS，但在实际开发中足够了，所以我们后台人员如果需要的话，建议使用LESS。</li>
+</ul>
+<h2 id="js"><a href="#js" class="headerlink" title="js"></a>js</h2><ul>
+<li>jq</li>
+<li>Angular：谷歌的，java程序员开发的，特点是将后端的MVC模式搬到前端了</li>
+<li>react：facebook的，提出了虚拟dom的概念，在内存中模拟dom的操作</li>
+<li>vue：集合他俩的优点</li>
+<li>axios：前端通信框架，因为vue的边界很明确</li>
+</ul>
+<h2 id="ui框架"><a href="#ui框架" class="headerlink" title="ui框架"></a>ui框架</h2><ul>
+<li>Ant-Design:阿里巴巴出品，基于React的UI框架</li>
+<li>ElementUl、iview、ice:饿了么出品，基于Vue 的UI框</li>
+<li>Bootstrap: Twitter推出的一个用于前端开发的开源工具</li>
+<li>AmazeUl:又叫“妹子UI”，一款HTML5跨屏前端框架</li>
+</ul>
+<h2 id="js构建工具"><a href="#js构建工具" class="headerlink" title="js构建工具"></a>js构建工具</h2><ul>
+<li>Babel:JS 编译工具，主要用于浏览器不支持的ES新特性，比如用于编译TypeScript</li>
+<li>WebPack:模块打包器，主要作用是打包、压缩、合并及按序加载</li>
+</ul>
+<p>nodejs的作者已经准备放弃了，正在开发一个deno，可能是太笨重了</p>
 
     </div>
 
@@ -237,11 +277,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/11/12/spring%E7%9A%84%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE/" rel="prev" title="">
+    <a href="/2021/11/12/Tree/" rel="prev" title="">
       <i class="fa fa-chevron-left"></i> 
     </a></div>
       <div class="post-nav-item">
-    <a href="/2021/11/12/%E5%85%B3%E4%BA%8E%E6%88%91%E5%A6%82%E4%BD%95%E5%9C%A8%E6%9C%BA%E6%88%BF%E7%9C%8BB%E7%AB%99/" rel="next" title="">
+    <a href="/2021/11/12/xml%E4%BE%BF%E7%AD%BE/" rel="next" title="">
        <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -302,7 +342,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%94%E8%AE%B0"><span class="nav-number">1.</span> <span class="nav-text">笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Mysq%E7%B4%A2%E5%BC%95"><span class="nav-number">1.1.</span> <span class="nav-text">Mysq索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E8%83%BD%E4%BD%93%E4%BC%9A%E5%88%B0%E7%AE%97%E6%B3%95%E7%9A%84%E5%A5%87%E5%A6%99%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="nav-number">1.2.</span> <span class="nav-text">最能体会到算法的奇妙的例子</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%8F%E5%B7%A5%E5%85%B7"><span class="nav-number">2.</span> <span class="nav-text">小工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#md%E8%87%AA%E5%8A%A8%E6%B7%BB%E5%8A%A0%E5%BA%8F%E5%8F%B7"><span class="nav-number">2.1.</span> <span class="nav-text">md自动添加序号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bing%E5%A3%81%E7%BA%B8%E7%88%AC%E5%8F%96%E5%90%8E%E5%86%8D%E8%87%AA%E5%8A%A8%E5%88%87%E6%8D%A2"><span class="nav-number">2.2.</span> <span class="nav-text">bing壁纸爬取后再自动切换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#github%E8%AE%BF%E9%97%AE"><span class="nav-number">2.3.</span> <span class="nav-text">github访问</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E9%A1%B5%E6%9D%A1"><span class="nav-number">2.4.</span> <span class="nav-text">分页条</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%B1%B3%E5%8D%B8%E8%BD%BD%E7%B3%BB%E7%BB%9F%E5%BA%94%E7%94%A8%EF%BC%88ADB%EF%BC%89"><span class="nav-number">2.5.</span> <span class="nav-text">小米卸载系统应用（ADB）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AB%9E%E8%B5%9B%E9%A2%98%E5%9E%8B%E5%88%86%E7%B1%BB"><span class="nav-number">2.6.</span> <span class="nav-text">竞赛题型分类</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1"><span class="nav-number">1.</span> <span class="nav-text">1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%BB%E8%BE%91"><span class="nav-number">1.1.</span> <span class="nav-text">逻辑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6"><span class="nav-number">1.2.</span> <span class="nav-text">事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%86%E5%9B%BE"><span class="nav-number">1.3.</span> <span class="nav-text">视图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E4%BF%A1"><span class="nav-number">1.4.</span> <span class="nav-text">通信</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF%E5%A4%A7%E7%BA%B2"><span class="nav-number">2.</span> <span class="nav-text">前端大纲</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#html-%E7%95%A5"><span class="nav-number">2.1.</span> <span class="nav-text">html 略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#css"><span class="nav-number">2.2.</span> <span class="nav-text">css</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js"><span class="nav-number">2.3.</span> <span class="nav-text">js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ui%E6%A1%86%E6%9E%B6"><span class="nav-number">2.4.</span> <span class="nav-text">ui框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7"><span class="nav-number">2.5.</span> <span class="nav-text">js构建工具</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -318,7 +358,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
