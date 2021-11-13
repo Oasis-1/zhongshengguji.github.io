@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="需求：一个人换头像后，想找到他上一个用的头像">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一气之下怒学微信">
+<meta property="og:url" content="http://example.com/2021/06/10/%E4%B8%80%E6%B0%94%E4%B9%8B%E4%B8%8B%E6%80%92%E5%AD%A6%E5%BE%AE%E4%BF%A1/index.html">
+<meta property="og:site_name" content="Oasis">
+<meta property="og:description" content="需求：一个人换头像后，想找到他上一个用的头像">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2021/06/10/%E4%B8%80%E6%B0%94%E4%B9%8B%E4%B8%8B%E6%80%92%E5%AD%A6%E5%BE%AE%E4%BF%A1/image-20210629185102672.png">
+<meta property="article:published_time" content="2021-06-10T12:46:25.000Z">
+<meta property="article:modified_time" content="2021-11-13T08:57:49.827Z">
+<meta property="article:author" content="王一">
+<meta property="article:tag" content="下副本">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/06/10/%E4%B8%80%E6%B0%94%E4%B9%8B%E4%B8%8B%E6%80%92%E5%AD%A6%E5%BE%AE%E4%BF%A1/image-20210629185102672.png">
+
+<link rel="canonical" href="http://example.com/2021/06/10/%E4%B8%80%E6%B0%94%E4%B9%8B%E4%B8%8B%E6%80%92%E5%AD%A6%E5%BE%AE%E4%BF%A1/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>一气之下怒学微信 | Oasis</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Oasis</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-resources">
+
+    <a href="/resources/" rel="section"><i class="download fa-fw"></i>资源</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/10/%E4%B8%80%E6%B0%94%E4%B9%8B%E4%B8%8B%E6%80%92%E5%AD%A6%E5%BE%AE%E4%BF%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/1.gif">
+      <meta itemprop="name" content="王一">
+      <meta itemprop="description" content="你进入游戏行业，就是为了让孩子们上瘾，让人们点击广告吗——美食家五叔评《纪念碑谷》">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Oasis">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          一气之下怒学微信
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-06-10 20:46:25" itemprop="dateCreated datePublished" datetime="2021-06-10T20:46:25+08:00">2021-06-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-13 16:57:49" itemprop="dateModified" datetime="2021-11-13T16:57:49+08:00">2021-11-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%8F%AF%E4%BB%A5%E5%85%AC%E5%BC%80%E7%9A%84%E6%97%A5%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">可以公开的日记</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="需求："><a href="#需求：" class="headerlink" title="需求："></a>需求：</h1><p>一个人换头像后，想找到他上一个用的头像</p>
+<span id="more"></span>
+
+<h1 id="结论：失败了"><a href="#结论：失败了" class="headerlink" title="结论：失败了"></a>结论：失败了</h1><p>换了头像后，原来的头像就被删了</p>
+<p>详细结论：</p>
+<p>点一个人的头像后，这个人的头像的高清下载图就会下载到<code>Z:\QQWX\WeChat Files\wxid_zht2gwzq9k1c22\FileStorage\General\HDHeadImage</code></p>
+<p>然后当这个人换头像后,这个原来的图片就会被删除</p>
+<p>再次点击,过几秒新图片就会被下载进来,如果不点击，那么还是一直用的老图片</p>
+<p>并且发现，每个用户的头像保存图片的名字，都是相同的，指同一个key</p>
+<p>老图片的名字<code>9c023452fbb6ec0a6c5e0ab7cb7c368c_1.jpg</code></p>
+<p>新图片的名字<code>9c023452fbb6ec0a6c5e0ab7cb7c368c_1.jpg</code></p>
+<h1 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h1><h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p><del><img src="image-20210629185102672.png" alt="image-20210629185102672"></del></p>
+<p><del>就想找到上个图片里的男的是谁？</del></p>
+<h2 id="经过"><a href="#经过" class="headerlink" title="经过"></a>经过</h2><h3 id="第一次碰壁"><a href="#第一次碰壁" class="headerlink" title="第一次碰壁"></a>第一次碰壁</h3><p>直接去百度里搜微信图片在哪</p>
+<p>然后给出来的答案都是老版微信，说在Tencent/MicroMsg文件夹下</p>
+<p>因为新版的已经会加密了，所以这个答案本身就是一个过时的错误答案</p>
+<h3 id="找到解码器"><a href="#找到解码器" class="headerlink" title="找到解码器"></a>找到解码器</h3><p>又在知乎上搜的<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/393121310/answer/1586857073">https://www.zhihu.com/question/393121310/answer/1586857073</a></p>
+<p>得到关键信息<strong>新版微信图片在一个文件夹里用的dat格式的文件进行加密，然后可以通过解码器反解出结果</strong></p>
+<h3 id="第二次碰壁"><a href="#第二次碰壁" class="headerlink" title="第二次碰壁"></a>第二次碰壁</h3><p>免费的是在线的而且只能看小图</p>
+<p>通过上面的链接下载的一个exe文件</p>
+<p>发现是需要付费才能批量转换，而且转换一个比较小的也失败了，我就去找其他的源码了</p>
+<h4 id="找到两份源码"><a href="#找到两份源码" class="headerlink" title="找到两份源码"></a>找到两份源码</h4><p><a target="_blank" rel="noopener" href="https://www.9035shop.cn/archives/%E5%BE%AE%E4%BF%A1dat%E6%96%87%E4%BB%B6%E8%A7%A3%E7%A0%81">没成功</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/a627428179/article/details/95485146/">成功</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.atomic.AtomicReference;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">weChatImgRevert</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String path = <span class="string">&quot;C:\\Users\\m\\Desktop\\2&quot;</span>;</span><br><span class="line">        String targetPath = <span class="string">&quot;Z:\\QQWX\\WeChat Files\\wxid_zht2gwzq9k1c22\\FileStorage\\Image\\q\\w\\e&quot;</span>;</span><br><span class="line">        <span class="keyword">int</span> xor = <span class="number">0xE2</span>;</span><br><span class="line">        convert(path, targetPath, xor);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> path       图片地址</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> targetPath 转换后目录</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">convert</span><span class="params">(String path, String targetPath, <span class="keyword">int</span> xor)</span> </span>&#123;</span><br><span class="line">        File[] file = <span class="keyword">new</span> File(path).listFiles();</span><br><span class="line">        <span class="keyword">if</span> (file == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> size = file.length;</span><br><span class="line">        System.out.println(<span class="string">&quot;总共&quot;</span> + size + <span class="string">&quot;个文件&quot;</span>);</span><br><span class="line">        AtomicReference&lt;Integer&gt; integer = <span class="keyword">new</span> AtomicReference&lt;&gt;(<span class="number">0</span>);</span><br><span class="line">        Arrays.stream(file).parallel().forEach(file1 -&gt; &#123;</span><br><span class="line">            <span class="keyword">try</span> (InputStream reader = <span class="keyword">new</span> FileInputStream(file1);</span><br><span class="line">                 OutputStream writer =</span><br><span class="line">                         <span class="keyword">new</span> FileOutputStream(targetPath + file1.getName().split(<span class="string">&quot;\\.&quot;</span>)[<span class="number">0</span>] + <span class="string">&quot;.jpg&quot;</span>)) &#123;</span><br><span class="line">                <span class="keyword">byte</span>[] bytes = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span> * <span class="number">10</span>];</span><br><span class="line">                <span class="keyword">int</span> b;</span><br><span class="line">                <span class="keyword">while</span> ((b = reader.read(bytes)) != -<span class="number">1</span>) &#123;<span class="comment">//这里的in.read(bytes);就是把输入流中的东西，写入到内存中（bytes）。</span></span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; bytes.length; i++) &#123;</span><br><span class="line">                        bytes[i] = (<span class="keyword">byte</span>) (<span class="keyword">int</span>) (bytes[i] ^ xor);</span><br><span class="line">                        <span class="keyword">if</span> (i == (b - <span class="number">1</span>)) &#123;</span><br><span class="line">                            <span class="keyword">break</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    writer.write(bytes, <span class="number">0</span>, b);</span><br><span class="line">                    writer.flush();</span><br><span class="line">                &#125;</span><br><span class="line">                integer.set(integer.get() + <span class="number">1</span>);</span><br><span class="line">                System.out.println(file1.getName() + <span class="string">&quot;(大小:&quot;</span> + ((<span class="keyword">double</span>) file1.length() / <span class="number">1000</span>) + <span class="string">&quot;kb),进度：&quot;</span> + integer.get() +</span><br><span class="line">                        <span class="string">&quot;/&quot;</span> + size);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        System.out.println(<span class="string">&quot;解析完毕！&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取异或值，不一定准确，当解析不出来的时候，换一张图片的异或值来解析</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> PhotoPath</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getXor</span><span class="params">(String PhotoPath)</span> </span>&#123;</span><br><span class="line">        File file = <span class="keyword">new</span> File(PhotoPath);</span><br><span class="line">        <span class="keyword">try</span> (InputStream reader = <span class="keyword">new</span> FileInputStream(file)) &#123;</span><br><span class="line">            <span class="keyword">int</span>[] xors = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">4</span>];</span><br><span class="line">            xors[<span class="number">0</span>] = reader.read() &amp; <span class="number">0xFF</span> ^ <span class="number">0xFF</span>;</span><br><span class="line">            xors[<span class="number">1</span>] = reader.read() &amp; <span class="number">0xFF</span> ^ <span class="number">0xD8</span>;</span><br><span class="line">            reader.skip(file.length() - <span class="number">1</span>);</span><br><span class="line">            xors[<span class="number">2</span>] = reader.read() &amp; <span class="number">0xFF</span> ^ <span class="number">0xFF</span>;</span><br><span class="line">            xors[<span class="number">3</span>] = reader.read() &amp; <span class="number">0xFF</span> ^ <span class="number">0xD9</span>;</span><br><span class="line">            Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> xor : xors) &#123;</span><br><span class="line">                <span class="keyword">if</span> (map.containsKey(xor)) &#123;</span><br><span class="line">                    map.put(xor, map.get(xor) + <span class="number">1</span>);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    map.put(xor, <span class="number">1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> map.values().stream().max(Integer::compareTo).get();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>第二个成功的时候，用王冰冰的图片测试的时候，因为可能每个人的异或值不同，然后又下载了一个16进制查看器，UltraEdit</p>
+<p>然后通过查看源dat文件的前四位为1D3A与jpg的前四位FFD8进行异或运算后得到<code>E2E2</code>所以第三个参数写的E2</p>
+<p>tips:这个文件写的输出路径有问题，他会输出到前一级的路径</p>
+<p>tips2:第三个参数，应该是每个人的加密密码都不同，所以解密密钥也不同。易德涛的是6A4D XOR FFD8 得到9595 解码成功   路径里含汉字也可以成功</p>
+<h1 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h1><p><code>Z:\\QQWX\\WeChat Files\\wxid_zht2gwzq9k1c22\\FileStorage</code>微信里大部分聊天记录，缓存之类的文件都在这里</p>
+<p><a target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1612231055814945994&wfr=spider&for=pc">每个文件夹都缓存的什么</a></p>
+<ol>
+<li><p>cache各种缓存，小图片都在这里很多</p>
+<ol start="2">
+<li>file都是下载的文件</li>
+<li><strong>General\HDHeadImage这下面就是这次的核心这次需求找的头像都在这里存着了</strong></li>
+<li>image文件夹下全部都是年-月里面都是dat文件的图片，这个是这次代码用的地方</li>
+<li>sns文件是缓存文件，但是无法直接打开 1400多只有200MB感觉不会有想要的东西，手机里删除缓存就是删除的这个文件夹里的内容</li>
+<li>temp是临时文件夹 6.26-6.29没啥重要的</li>
+<li>Video是存每个月的视频文件</li>
+</ol>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+    
+      <div>
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:24px;">-------------一键三连加关注，包包金橙挡不住-------------</div>
+    
+</div>
+      </div>
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>王一
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/2021/06/10/%E4%B8%80%E6%B0%94%E4%B9%8B%E4%B8%8B%E6%80%92%E5%AD%A6%E5%BE%AE%E4%BF%A1/" title="一气之下怒学微信">http://example.com/2021/06/10/一气之下怒学微信/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E4%B8%8B%E5%89%AF%E6%9C%AC/" rel="tag"># 下副本</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/06/10/%E6%8A%93%E5%8C%85%E5%BF%83%E5%BE%97/" rel="prev" title="抓包心得">
+      <i class="fa fa-chevron-left"></i> 抓包心得
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/06/16/%E9%9A%8F%E6%9C%BA%E6%95%B0%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" rel="next" title="怎么提高抽卡概率（失败了）————java随机数源码分析">
+      怎么提高抽卡概率（失败了）————java随机数源码分析 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC81NDY4Ny8zMTE1OA=="></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9C%80%E6%B1%82%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">需求：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AE%BA%EF%BC%9A%E5%A4%B1%E8%B4%A5%E4%BA%86"><span class="nav-number">2.</span> <span class="nav-text">结论：失败了</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%87%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text">过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B5%B7%E5%9B%A0"><span class="nav-number">3.1.</span> <span class="nav-text">起因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%8F%E8%BF%87"><span class="nav-number">3.2.</span> <span class="nav-text">经过</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%A2%B0%E5%A3%81"><span class="nav-number">3.2.1.</span> <span class="nav-text">第一次碰壁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%BE%E5%88%B0%E8%A7%A3%E7%A0%81%E5%99%A8"><span class="nav-number">3.2.2.</span> <span class="nav-text">找到解码器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AC%A1%E7%A2%B0%E5%A3%81"><span class="nav-number">3.2.3.</span> <span class="nav-text">第二次碰壁</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%BE%E5%88%B0%E4%B8%A4%E4%BB%BD%E6%BA%90%E7%A0%81"><span class="nav-number">3.2.3.1.</span> <span class="nav-text">找到两份源码</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%94%B6%E8%8E%B7"><span class="nav-number">4.</span> <span class="nav-text">收获</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王一"
+      src="/images/1.gif">
+  <p class="site-author-name" itemprop="name">王一</p>
+  <div class="site-description" itemprop="description">你进入游戏行业，就是为了让孩子们上瘾，让人们点击广告吗——美食家五叔评《纪念碑谷》</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://zhongshengguji.github.io/" title="GitHub → https:&#x2F;&#x2F;zhongshengguji.github.io&#x2F;" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/zhong-sheng-gu-ji-24" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;zhong-sheng-gu-ji-24" rel="noopener" target="_blank"><i class="gratipay fa-fw"></i>知乎</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/jhfgjhg1" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;jhfgjhg1" rel="noopener" target="_blank"><i class="codiepie fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/82340048" title="B站 → https:&#x2F;&#x2F;space.bilibili.com&#x2F;82340048" rel="noopener" target="_blank"><i class="bold fa-fw"></i>B站</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="link fa-fw"></i>
+      我的学校
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.bilibili.com/" title="https:&#x2F;&#x2F;www.bilibili.com&#x2F;" rel="noopener" target="_blank">B站</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.kfu.edu.cn/" title="http:&#x2F;&#x2F;www.kfu.edu.cn&#x2F;" rel="noopener" target="_blank">开封大学</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.shanghuaxueyuan.com/" title="http:&#x2F;&#x2F;www.shanghuaxueyuan.com&#x2F;" rel="noopener" target="_blank">裳华职业技术中专</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2021-11 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">王一</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">278k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">4:13</span>
+</div>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共79.6k字</span>
+</div>
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">总访客数<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+$(document).ready(function() {
+
+    var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+    var countOffset = 20000;  // 初始化首次数据
+
+    function fixCount() {            
+       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
+        {
+            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
+            clearInterval(int);
+        }                  
+        if ($("#busuanzi_container_site_pv").css("display") != "none")
+        {
+            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // 加上初始数据 
+            clearInterval(int); // 停止检测
+        }  
+    }
+       	
+});
+</script> 
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+</body>
+</html>
