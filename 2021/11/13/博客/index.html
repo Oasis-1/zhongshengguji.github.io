@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="主参考 辅助参考 github和hexo搭建博客踩的坑">
+<meta property="og:type" content="article">
+<meta property="og:title" content="搭建博客">
+<meta property="og:url" content="http://example.com/2021/11/13/%E5%8D%9A%E5%AE%A2/index.html">
+<meta property="og:site_name" content="Oasis">
+<meta property="og:description" content="主参考 辅助参考 github和hexo搭建博客踩的坑">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-11-13T05:27:16.000Z">
+<meta property="article:modified_time" content="2021-11-13T09:05:56.162Z">
+<meta property="article:author" content="王一">
+<meta property="article:tag" content="笔记">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2021/11/13/%E5%8D%9A%E5%AE%A2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>搭建博客 | Oasis</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Oasis</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-resources">
+
+    <a href="/resources/" rel="section"><i class="download fa-fw"></i>资源</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/13/%E5%8D%9A%E5%AE%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/1.gif">
+      <meta itemprop="name" content="王一">
+      <meta itemprop="description" content="你进入游戏行业，就是为了让孩子们上瘾，让人们点击广告吗——美食家五叔评《纪念碑谷》">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Oasis">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          搭建博客
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-11-13 13:27:16 / 修改时间：17:05:56" itemprop="dateCreated datePublished" datetime="2021-11-13T13:27:16+08:00">2021-11-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%AB%98%E8%B4%A8%E9%87%8F%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">高质量笔记</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/102592286">主参考</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html#%E4%B8%8A%E4%BC%A0%E5%88%B0github">辅助参考</a></p>
+<h1 id="github和hexo搭建博客"><a href="#github和hexo搭建博客" class="headerlink" title="github和hexo搭建博客"></a>github和hexo搭建博客</h1><h2 id="踩的坑"><a href="#踩的坑" class="headerlink" title="踩的坑"></a>踩的坑</h2><span id="more"></span>
+
+<h4 id="git中使用vpn代理"><a href="#git中使用vpn代理" class="headerlink" title="git中使用vpn代理"></a>git中使用vpn代理</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_50930469/article/details/116941817">https://blog.csdn.net/m0_50930469/article/details/116941817</a></p>
+<p><code>git config --global http.proxy http://127.0.0.1:7890</code></p>
+<h2 id="一堆ERR"><a href="#一堆ERR" class="headerlink" title="一堆ERR"></a>一堆ERR</h2><p>是没有权限，左下角找到git bash的文件，管理员运行，然后cd到想要的目录即可</p>
+<h2 id="hexo报错-not-found"><a href="#hexo报错-not-found" class="headerlink" title="hexo报错 not found"></a>hexo报错 not found</h2><p>环境变量问题，初始化的时候</p>
+<h2 id="YAMLException-duplicated-mapping-key-25-1"><a href="#YAMLException-duplicated-mapping-key-25-1" class="headerlink" title="YAMLException: duplicated mapping key (25:1)"></a>YAMLException: duplicated mapping key (25:1)</h2><p>同一个键赋了两次值，ctrl+F搜索下即可</p>
+<h2 id="没踩，设置地址那步，必须用自己的用户名，一个用户只能有一个仓库当成博客"><a href="#没踩，设置地址那步，必须用自己的用户名，一个用户只能有一个仓库当成博客" class="headerlink" title="没踩，设置地址那步，必须用自己的用户名，一个用户只能有一个仓库当成博客"></a><del>没踩，设置地址那步，必须用自己的用户名，一个用户只能有一个仓库当成博客</del></h2><h1 id="常用的"><a href="#常用的" class="headerlink" title="常用的"></a>常用的</h1><p>清空</p>
+<p>组件</p>
+<p>发布到网上<code>https://zhongshengguji.github.io/</code></p>
+<p>本地<code>http://localhost:4000/</code></p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo clear</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<h1 id="大体流程"><a href="#大体流程" class="headerlink" title="大体流程"></a>大体流程</h1><h2 id="注册github"><a href="#注册github" class="headerlink" title="注册github"></a>注册github</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/103268406">这步结束，可以在github这个论坛玩了</a></p>
+<p>仓库的名字只能是用户名，所以每个用户只能有一个免费的博客</p>
+<h2 id="下载git"><a href="#下载git" class="headerlink" title="下载git"></a>下载git</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/103325381">这步结束，可以在git里操作，另一个cmd罢了</a></p>
+<h2 id="绑定git-github"><a href="#绑定git-github" class="headerlink" title="绑定git+github"></a>绑定git+github</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/103391101">绑定成功后，辅助参考中3.1命令中，github会用你的用户名和你打招呼</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html#%E4%B8%8A%E4%BC%A0%E5%88%B0github">辅助参考</a></p>
+<h2 id="购买域名"><a href="#购买域名" class="headerlink" title="购买域名"></a>购买域名</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/103268406">暂不考虑</a></p>
+<h2 id="下载nodejs-hexo"><a href="#下载nodejs-hexo" class="headerlink" title="下载nodejs+hexo"></a>下载nodejs+hexo</h2><p>这步结束后，就可以使用，外网访问hexo了，跟tomcat第一次访问8080一样</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/105715224">这里不要看主文件，有坑，看下面这个</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42893625/article/details/100852221">powerShell安装hexo</a></p>
+<h2 id="解析域名"><a href="#解析域名" class="headerlink" title="解析域名"></a>解析域名</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/103813944">暂不考虑</a></p>
+<h2 id="美化博客"><a href="#美化博客" class="headerlink" title="美化博客"></a>美化博客</h2><p>分开</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- more --&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="显示文章总数"><a href="#显示文章总数" class="headerlink" title="显示文章总数"></a>显示文章总数</h2><p><a target="_blank" rel="noopener" href="https://www.himmy.cn/2019/07/06/hexo%E5%8D%9A%E5%AE%A2next%E4%B8%BB%E9%A2%98%E4%B8%8B%E6%B7%BB%E5%8A%A0%E5%AD%97%E6%95%B0%E7%BB%9F%E8%AE%A1%E5%92%8C%E9%98%85%E8%AF%BB%E6%97%B6%E9%95%BF/">https://www.himmy.cn/2019/07/06/hexo%E5%8D%9A%E5%AE%A2next%E4%B8%BB%E9%A2%98%E4%B8%8B%E6%B7%BB%E5%8A%A0%E5%AD%97%E6%95%B0%E7%BB%9F%E8%AE%A1%E5%92%8C%E9%98%85%E8%AF%BB%E6%97%B6%E9%95%BF/</a></p>
+<h2 id="显示文字数量和阅读时间"><a href="#显示文字数量和阅读时间" class="headerlink" title="显示文字数量和阅读时间"></a>显示文字数量和阅读时间</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34626094/article/details/113109957">踩坑，新版本名字跟他老版本里的名字不对，自己分析出来的</a></p>
+<p><code>  &lt;span&gt;&#123;&#123; symbolsCount(post) &#125;&#125;字&lt;/span&gt;</code></p>
+<p><code>symbolsTime(post, config.symbols_count_time.awl, config.symbols_count_time.wpm, __(&#39;symbols_count_time.time_minutes&#39;))</code></p>
+<h2 id="图床"><a href="#图床" class="headerlink" title="图床"></a>图床</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/340760172">https://zhuanlan.zhihu.com/p/340760172</a></p>
+
+    </div>
+
+    
+    
+    
+    
+      <div>
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:24px;">-------------一键三连加关注，包包金橙挡不住-------------</div>
+    
+</div>
+      </div>
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>王一
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/2021/11/13/%E5%8D%9A%E5%AE%A2/" title="搭建博客">http://example.com/2021/11/13/博客/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/10/31/SpringMVC/" rel="prev" title="springMVC笔记">
+      <i class="fa fa-chevron-left"></i> springMVC笔记
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC81NDY4Ny8zMTE1OA=="></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#github%E5%92%8Chexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2"><span class="nav-number">1.</span> <span class="nav-text">github和hexo搭建博客</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B8%A9%E7%9A%84%E5%9D%91"><span class="nav-number">1.1.</span> <span class="nav-text">踩的坑</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#git%E4%B8%AD%E4%BD%BF%E7%94%A8vpn%E4%BB%A3%E7%90%86"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">git中使用vpn代理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E5%A0%86ERR"><span class="nav-number">1.2.</span> <span class="nav-text">一堆ERR</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo%E6%8A%A5%E9%94%99-not-found"><span class="nav-number">1.3.</span> <span class="nav-text">hexo报错 not found</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#YAMLException-duplicated-mapping-key-25-1"><span class="nav-number">1.4.</span> <span class="nav-text">YAMLException: duplicated mapping key (25:1)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B2%A1%E8%B8%A9%EF%BC%8C%E8%AE%BE%E7%BD%AE%E5%9C%B0%E5%9D%80%E9%82%A3%E6%AD%A5%EF%BC%8C%E5%BF%85%E9%A1%BB%E7%94%A8%E8%87%AA%E5%B7%B1%E7%9A%84%E7%94%A8%E6%88%B7%E5%90%8D%EF%BC%8C%E4%B8%80%E4%B8%AA%E7%94%A8%E6%88%B7%E5%8F%AA%E8%83%BD%E6%9C%89%E4%B8%80%E4%B8%AA%E4%BB%93%E5%BA%93%E5%BD%93%E6%88%90%E5%8D%9A%E5%AE%A2"><span class="nav-number">1.5.</span> <span class="nav-text">没踩，设置地址那步，必须用自己的用户名，一个用户只能有一个仓库当成博客</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84"><span class="nav-number">2.</span> <span class="nav-text">常用的</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%A7%E4%BD%93%E6%B5%81%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text">大体流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E5%86%8Cgithub"><span class="nav-number">3.1.</span> <span class="nav-text">注册github</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BDgit"><span class="nav-number">3.2.</span> <span class="nav-text">下载git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%91%E5%AE%9Agit-github"><span class="nav-number">3.3.</span> <span class="nav-text">绑定git+github</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%AD%E4%B9%B0%E5%9F%9F%E5%90%8D"><span class="nav-number">3.4.</span> <span class="nav-text">购买域名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BDnodejs-hexo"><span class="nav-number">3.5.</span> <span class="nav-text">下载nodejs+hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E6%9E%90%E5%9F%9F%E5%90%8D"><span class="nav-number">3.6.</span> <span class="nav-text">解析域名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BE%8E%E5%8C%96%E5%8D%9A%E5%AE%A2"><span class="nav-number">3.7.</span> <span class="nav-text">美化博客</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E6%96%87%E7%AB%A0%E6%80%BB%E6%95%B0"><span class="nav-number">3.8.</span> <span class="nav-text">显示文章总数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E6%96%87%E5%AD%97%E6%95%B0%E9%87%8F%E5%92%8C%E9%98%85%E8%AF%BB%E6%97%B6%E9%97%B4"><span class="nav-number">3.9.</span> <span class="nav-text">显示文字数量和阅读时间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BE%E5%BA%8A"><span class="nav-number">3.10.</span> <span class="nav-text">图床</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王一"
+      src="/images/1.gif">
+  <p class="site-author-name" itemprop="name">王一</p>
+  <div class="site-description" itemprop="description">你进入游戏行业，就是为了让孩子们上瘾，让人们点击广告吗——美食家五叔评《纪念碑谷》</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://zhongshengguji.github.io/" title="GitHub → https:&#x2F;&#x2F;zhongshengguji.github.io&#x2F;" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/zhong-sheng-gu-ji-24" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;zhong-sheng-gu-ji-24" rel="noopener" target="_blank"><i class="gratipay fa-fw"></i>知乎</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/jhfgjhg1" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;jhfgjhg1" rel="noopener" target="_blank"><i class="codiepie fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/82340048" title="B站 → https:&#x2F;&#x2F;space.bilibili.com&#x2F;82340048" rel="noopener" target="_blank"><i class="bold fa-fw"></i>B站</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="link fa-fw"></i>
+      我的学校
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.bilibili.com/" title="https:&#x2F;&#x2F;www.bilibili.com&#x2F;" rel="noopener" target="_blank">B站</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.kfu.edu.cn/" title="http:&#x2F;&#x2F;www.kfu.edu.cn&#x2F;" rel="noopener" target="_blank">开封大学</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.shanghuaxueyuan.com/" title="http:&#x2F;&#x2F;www.shanghuaxueyuan.com&#x2F;" rel="noopener" target="_blank">裳华职业技术中专</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2021-11 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">王一</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">278k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">4:13</span>
+</div>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共79.6k字</span>
+</div>
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">总访客数<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+$(document).ready(function() {
+
+    var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+    var countOffset = 20000;  // 初始化首次数据
+
+    function fixCount() {            
+       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
+        {
+            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
+            clearInterval(int);
+        }                  
+        if ($("#busuanzi_container_site_pv").css("display") != "none")
+        {
+            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // 加上初始数据 
+            clearInterval(int); // 停止检测
+        }  
+    }
+       	
+});
+</script> 
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+</body>
+</html>
