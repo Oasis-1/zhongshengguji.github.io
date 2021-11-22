@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="论 文 摘 要现在人们越来越喜欢出去玩，但是想看电影的时候再去买票非常的不方便， 完全可以在家中用电脑购票，无需排队等待，而且尽早订票还可以看到自己喜欢的电影。节约了时间，增加了我们出行玩的效率。所以我们开发了这款 网上订票系统，以方便大家的出行需求 本文阐述了一个前后端分离的网上购票系统和后台管理系统的体系结构和设计实现过程。前端采用了layui+bootStrap,后端ssm+mysql开发，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我的毕业设计————网上购票系统的设计与实现">
+<meta property="og:url" content="http://example.com/2021/11/22/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1%E7%BB%88%E7%A8%BF/index.html">
+<meta property="og:site_name" content="Oasis">
+<meta property="og:description" content="论 文 摘 要现在人们越来越喜欢出去玩，但是想看电影的时候再去买票非常的不方便， 完全可以在家中用电脑购票，无需排队等待，而且尽早订票还可以看到自己喜欢的电影。节约了时间，增加了我们出行玩的效率。所以我们开发了这款 网上订票系统，以方便大家的出行需求 本文阐述了一个前后端分离的网上购票系统和后台管理系统的体系结构和设计实现过程。前端采用了layui+bootStrap,后端ssm+mysql开发，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211122183607500.png">
+<meta property="og:image" content="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211122183630275.png">
+<meta property="og:image" content="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211122183719608.png">
+<meta property="og:image" content="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211122183730163.png">
+<meta property="og:image" content="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211122183749166.png">
+<meta property="og:image" content="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211122183818723.png">
+<meta property="og:image" content="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211122183830556.png">
+<meta property="og:image" content="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211122183849875.png">
+<meta property="og:image" content="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211122183907582.png">
+<meta property="og:image" content="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211122184026310.png">
+<meta property="og:image" content="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211122184044317.png">
+<meta property="og:image" content="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211122184121015.png">
+<meta property="og:image" content="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211122184135315.png">
+<meta property="og:image" content="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211122184150784.png">
+<meta property="og:image" content="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211122184159605.png">
+<meta property="og:image" content="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211122184210318.png">
+<meta property="og:image" content="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211122184353506.png">
+<meta property="og:image" content="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211122182820534.png">
+<meta property="og:image" content="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211122183032798.png">
+<meta property="og:image" content="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211122183151440.png">
+<meta property="og:image" content="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211122183309477.png">
+<meta property="og:image" content="https://gitee.com/wangyi12/pic-bed/raw/master/img/bysjqweqweqwes.png">
+<meta property="article:published_time" content="2021-11-22T10:50:16.000Z">
+<meta property="article:modified_time" content="2021-11-22T11:11:26.740Z">
+<meta property="article:author" content="王一">
+<meta property="article:tag" content="毕业设计">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211122183607500.png">
+
+<link rel="canonical" href="http://example.com/2021/11/22/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1%E7%BB%88%E7%A8%BF/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>我的毕业设计————网上购票系统的设计与实现 | Oasis</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Oasis</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-resources">
+
+    <a href="/resources/" rel="section"><i class="download fa-fw"></i>资源</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/22/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1%E7%BB%88%E7%A8%BF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/1.gif">
+      <meta itemprop="name" content="王一">
+      <meta itemprop="description" content="你进入游戏行业，就是为了让孩子们上瘾，让人们点击广告吗———美食家五叔评《纪念碑谷》">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Oasis">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          我的毕业设计————网上购票系统的设计与实现
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-11-22 18:50:16 / 修改时间：19:11:26" itemprop="dateCreated datePublished" datetime="2021-11-22T18:50:16+08:00">2021-11-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%AB%98%E8%B4%A8%E9%87%8F%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">高质量笔记</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>15k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>13 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="论-文-摘-要"><a href="#论-文-摘-要" class="headerlink" title="论 文 摘 要"></a>论 文 摘 要</h1><p>现在人们越来越喜欢出去玩，但是想看电影的时候再去买票非常的不方便， 完全可以在家中用电脑购票，无需排队等待，而且尽早订票还可以看到自己喜欢的电影。节约了时间，增加了我们出行玩的效率。所以我们开发了这款 网上订票系统，以方便大家的出行需求</p>
+<p>本文阐述了一个前后端分离的网上购票系统和后台管理系统的体系结构和设计实现过程。前端采用了layui+bootStrap,后端ssm+mysql开发，前后端使用ajax+json进行数据的交换。系统实现了两种权限用户登录，用户购票和管理员管理后台。</p>
+<p>关键词：网上购票系统 ssm MySql json</p>
+<span id="more"></span>
+
+<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><h2 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h2><p>随着现代计算机技术的发展，计算机在各个领域中都得到了广泛的应用。当今社会已经步入了数字化时代。计算机正在潜移默化的改变着我们的生活。以往我们企业系统维护要上门服务，现在随着Internet的飞速发展，我们已经实现了网上宣传和系统维护。   </p>
+<p>对于传统电影票售票而言，通过前台购买排队等待，其对顾客广泛的宣传和服务不便利。电影票售票系统的开发的便利和进入的网络时代，使得许多影视公司拥有了参与电影票售票系统网站的开发和设计，从而能够有效地改善电影的宣传有限和市场竞争结构，显著提高影视公司的知名度。</p>
+<p>网络发展到今天，是必然的结果。网络使人们的生活发生了深刻的变革,Internet成为很多活动的重要场所。电影票售票系统现在虽然还处于发展阶段，但是随着互联网经济的发展，越来越多的人投入倒电影票售票系统维护这个领域中来。网上维护最大程度的方便了顾客。顾客足不出户，在电影网站通过www浏览器实现网上把售票员请到家服务，便可将得到自己喜欢的电影,无需东奔西跑。本次设计的电影票售票系统-是一种具有交互功能的商业网站，可以方便服务于每一个客户。</p>
+<h2 id="关键技术"><a href="#关键技术" class="headerlink" title="关键技术"></a>关键技术</h2><h3 id="java简介"><a href="#java简介" class="headerlink" title="java简介"></a>java简介</h3><p>Java是一门面向对象编程语言，不仅吸收了C++语言的各种优点，还摒弃了C++里难以理解的多继承、指针等概念，因此Java语言具有功能强大和简单易用两个特征。Java语言作为静态面向对象编程语言的代表，极好地实现了面向对象理论，允许程序员以优雅的思维方式进行复杂的编程。</p>
+<h3 id="mysql简介"><a href="#mysql简介" class="headerlink" title="mysql简介"></a>mysql简介</h3><p>本系统的数据库是采用MySQL数据库，MySQL是一种开放源代码的关系型数据库管理系统（RDBMS），MySQL数据库系统使用最常用的数据库管理语言–结构化查询语言（SQL）进行数据库管理。</p>
+<h3 id="SSM框架简介"><a href="#SSM框架简介" class="headerlink" title="SSM框架简介"></a>SSM框架简介</h3><p>SSM框架就是Spring、Spring MVC和MyBatis框架的缩写，是标准的MVC模式，将整个系统划分为四层：表现层、controller层、service层、DAO层。使用SSM框架的好处是在于其易复用和简化开发,掌握了每个框架的核心思想。</p>
+<p>其中，spring MVC负责请求的转发和视图管理；spring实现业务对象管理；MyBatis作为数据对象的持久化引擎。</p>
+<h4 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h4><p>Spring的核心是提供了一个容器（container），通常称为Spring应用上下文（Springapplicationcontext），它们会创建和管理应用组件。这些组件也可以称为bean，会在Spring应用上下文中装配在一起，从而形成一个完整的应用程序。这就像砖块、砂浆、木材、管道和电线组合在一起，形成一栋房子似的。</p>
+<h4 id="SpringMVC"><a href="#SpringMVC" class="headerlink" title="SpringMVC"></a>SpringMVC</h4><p>Spring MVC属于SpringFrameWork的后续产品，已经融合在Spring Web Flow里面。Spring MVC 分离了控制器、模型对象、分派器以及处理程序对象的角色，这种分离让它们更容易进行定制。</p>
+<h4 id="MyBatis"><a href="#MyBatis" class="headerlink" title="MyBatis"></a>MyBatis</h4><p>MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。MyBatis是一个基于Java的持久层框架。iBATIS提供的持久层框架包括SQL Maps和Data Access Objects（DAO）。MyBatis 消除了几乎所有的JDBC代码和参数的手工设置以及结果集的检索。MyBatis 使用简单的 XML或注解用于配置和原始映射，将接口和 Java 的POJOs（Plain Old Java Objects，普通的 Java对象）映射成数据库中的记录。</p>
+<h1 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h1><h2 id="功能需求"><a href="#功能需求" class="headerlink" title="功能需求"></a>功能需求</h2><p>一个网上购物系统从开发到完成，需要分析许多问题,遵循许多原则和步骤，以确保系统进度的可控性和质量的预估性。本系统创建的是一个买电影票系统， 同样要考虑许多问题。</p>
+<h3 id="用户功能"><a href="#用户功能" class="headerlink" title="用户功能"></a>用户功能</h3><p> 本系统普通用户主要功能为选电影院，选场次，买电影票，查看订单，评论，退票</p>
+<p>​                                                                                 <img src="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211122183607500.png" alt="image-20211122183607500"></p>
+<p>​                                                                                                                图1 用户用例图</p>
+<h3 id="管理员功能"><a href="#管理员功能" class="headerlink" title="管理员功能"></a>管理员功能</h3><p>本系统管理员角色主要功能为维护用户信息，电影，场次，评论，订单信息。</p>
+<p><img src="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211122183630275.png" alt="image-20211122183630275"></p>
+<p>​                                                                                                                                    图2 管理员用例图</p>
+<h2 id="性能需求"><a href="#性能需求" class="headerlink" title="性能需求"></a>性能需求</h2><h3 id="硬件环境"><a href="#硬件环境" class="headerlink" title="硬件环境"></a>硬件环境</h3><p>CPU：i5-4510M或更高</p>
+<p>内存：1G内存以上</p>
+<h3 id="软件环境"><a href="#软件环境" class="headerlink" title="软件环境"></a>软件环境</h3><p>电脑系统：Windows 10 版本20H2(操作系统内部版本19042.1348)</p>
+<p>服务器：Tomcat9.0.41服务器</p>
+<p>系统所用数据库：Mysql-5.7.19</p>
+<p>程序语言：java</p>
+<p>JDK版本：1.8.0_275</p>
+<p>开发工具：IntelliJ IDEA 2020.2.3 x64</p>
+<p>浏览器：Google Chrome 96.0.4664.45</p>
+<h1 id="总体设计"><a href="#总体设计" class="headerlink" title="总体设计"></a>总体设计</h1><h2 id="系统架构设计"><a href="#系统架构设计" class="headerlink" title="系统架构设计"></a>系统架构设计</h2><p><img src="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211122183719608.png" alt="image-20211122183719608"></p>
+<p>​                                                                                                                            图3 总体结构图</p>
+<h2 id="（二）系统功能模块设计"><a href="#（二）系统功能模块设计" class="headerlink" title="（二）系统功能模块设计"></a>（二）系统功能模块设计</h2><p>​                                                             <img src="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211122183730163.png" alt="image-20211122183730163"></p>
+<p>​                                                                                                                            图4 功能模块图</p>
+<h1 id="详细设计"><a href="#详细设计" class="headerlink" title="详细设计"></a>详细设计</h1><h2 id="系统功能设计"><a href="#系统功能设计" class="headerlink" title="系统功能设计"></a>系统功能设计</h2><h3 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h3><p>类图主要用在面向对象软件开发的分析和设计阶段，描述系统的静态结构。类图图示了所构建系统的所有实体、实体的内部结构以及实体之间的关系。即．类图中包含从用户的客观世界模型中抽象出来的类、类的内部结构和类与类之间的关系。它是构建其他设计模型的基础，没有类图，就没有对象图、状态图、协作图等其他UMI．动态模型图．也就无法表示系统的动态行为。类图也是面向对象编程的起点和依据。</p>
+<p>​                                                         <img src="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211122183749166.png" alt="image-20211122183749166"></p>
+<p>​                                                                                                                    图5 主要类图</p>
+<h3 id="时序图"><a href="#时序图" class="headerlink" title="时序图"></a>时序图</h3><h4 id="用户登录时的顺序图"><a href="#用户登录时的顺序图" class="headerlink" title="用户登录时的顺序图"></a>用户登录时的顺序图</h4><p>​                                                         <img src="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211122183818723.png" alt="image-20211122183818723"></p>
+<p>​                                                                                                        图6 用户登录顺序图</p>
+<h4 id="用户买票顺序图"><a href="#用户买票顺序图" class="headerlink" title="用户买票顺序图"></a>用户买票顺序图</h4><p>​                                                             <img src="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211122183830556.png" alt="image-20211122183830556"></p>
+<p>​                                                                                                        图7 用户买票顺序图</p>
+<h3 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h3><p>程序流程图又称程序框图，是用统一规定的标准符号描述程序运行具体步骤的图形表示。程序框图的设计是在处理流程图的基础上，通过对输入输出数据和处理过程的详细分析，将计算机的主要运行步骤和内容标识出来。程序框图是进行程序设计的最基本依据，因此它的质量直接关系到程序设计的质量。</p>
+<h4 id="角色登录流程图"><a href="#角色登录流程图" class="headerlink" title="角色登录流程图"></a>角色登录流程图</h4><p>如果角色要使用系统的功能，那么在使用之前必须登录。用户只要输入用户名、密码就可以了。若用户输入的用户名和密码与数据库中保存的相符，则表明用户登录成功，可以开放对应角色的功能；如果不符，则登录失败。模块执行流程如图7角色登录流程图：</p>
+<p>​                                                                                                     <img src="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211122183849875.png" alt="image-20211122183849875"></p>
+<p>​                                                                                                        图8 角色登录流程图</p>
+<h4 id="用户注册流程图"><a href="#用户注册流程图" class="headerlink" title="用户注册流程图"></a>用户注册流程图</h4><p>添加新的用户，填写用户个人基本信息，包括账号、密码、E-mail还有验证码即可。如图9注册流程图：</p>
+<p>​                                                                                                                 <img src="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211122183907582.png" alt="image-20211122183907582"></p>
+<p>图9 学生注册流程图</p>
+<h4 id="用户买票流程图"><a href="#用户买票流程图" class="headerlink" title="用户买票流程图"></a>用户买票流程图</h4><p>用户登录系统后，选择想看的电影，选择去的电影院，选择场次，选择座位，生成订单，支付订单</p>
+<pre><code>                                                                                                             ![image-20211122184008436](https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211122184008436.png)
+</code></pre>
+<p>​                                                                                                                图10 网上购票流程图</p>
+<h2 id="数据库设计"><a href="#数据库设计" class="headerlink" title="数据库设计"></a>数据库设计</h2><p>数据库是系统设计的关键，其设计的好坏直接决定着系统的好坏。一个设计良好的。数据库可以提高开发效率，方便维护，并且为以后进行功能扩展留有余地。数据库设计就像在建高楼大厦的地基一样，如果设计不好，在将来的系统维护、变更、功能、功能扩展及后续开发中，会引起比较严重的错误，甚至推倒重建。</p>
+<h3 id="1-概念结构设计（E-R图）"><a href="#1-概念结构设计（E-R图）" class="headerlink" title="1.概念结构设计（E-R图）"></a>1.概念结构设计（E-R图）</h3><p>概念结构设计就是在数据分析的基础上自下而上的对整个系统的数据库概念结构进行设计。从用户的角度对视图进行开发，然后集成视图，最后分析从而取得最后的结果。对概念进行设计时采用实体—联系（E-R）  的模型开发措施。E-R模型法的构成元素有：实体、属性、联系，E-R模型可以用E-R图来表示，是对用户工作环境中所相关的事物给予提示，对实体特性的描述就是属性。</p>
+<h4 id="1-用户实体类"><a href="#1-用户实体类" class="headerlink" title="(1)  用户实体类"></a>(1)  用户实体类</h4><p> <img src="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211122184026310.png" alt="image-20211122184026310"></p>
+<p>​                                                        图11 用户实体类</p>
+<h4 id="评论实体类"><a href="#评论实体类" class="headerlink" title="评论实体类"></a>评论实体类</h4><p> <img src="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211122184044317.png" alt="image-20211122184044317"></p>
+<p>​                               图12 评论实体类</p>
+<h4 id="电影院实体类"><a href="#电影院实体类" class="headerlink" title="电影院实体类"></a>电影院实体类</h4><p> <img src="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211122184121015.png" alt="image-20211122184121015"></p>
+<p>​                                            图13 电影院实体类</p>
+<h4 id="放映厅实体类"><a href="#放映厅实体类" class="headerlink" title="放映厅实体类"></a>放映厅实体类</h4><p> <img src="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211122184135315.png" alt="image-20211122184135315"></p>
+<p>​                                            图14 放映厅实体类</p>
+<h4 id="场次实体类"><a href="#场次实体类" class="headerlink" title="场次实体类"></a>场次实体类</h4><p> <img src="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211122184150784.png" alt="image-20211122184150784"></p>
+<p>​                                                    图15 场次实体类</p>
+<h4 id="订单实体类"><a href="#订单实体类" class="headerlink" title="订单实体类"></a>订单实体类</h4><p> <img src="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211122184159605.png" alt="image-20211122184159605"></p>
+<p>​                                                     图16 订单实体类</p>
+<h4 id="电影信息实体类"><a href="#电影信息实体类" class="headerlink" title="电影信息实体类"></a>电影信息实体类</h4><p> <img src="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211122184210318.png" alt="image-20211122184210318"></p>
+<p>​                                            图17 电影信息实体类</p>
+<h4 id="8-系统总体E-R图"><a href="#8-系统总体E-R图" class="headerlink" title="(8)  系统总体E-R图"></a>(8)  系统总体E-R图</h4><p> <img src="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211122184353506.png" alt="image-20211122184353506"></p>
+<p>​                                         图18 系统总体E-R图</p>
+<h3 id="2-表结构"><a href="#2-表结构" class="headerlink" title="2.表结构"></a>2.表结构</h3><h4 id="1-逻辑结构设计"><a href="#1-逻辑结构设计" class="headerlink" title="(1)  逻辑结构设计"></a>(1)  逻辑结构设计</h4><p>用户表（id，用户名，密码，用户邮箱，权限等级，头像地址）</p>
+<p>电影院表（cinema_id，电影院名字，影院地址）</p>
+<p>放映厅表（hall_id，放映厅名字，放映厅容量，所属影院）</p>
+<p>场次表（schedule_id，所属放映厅，电影id，放映时间，售价，，剩余座位，场次状态） </p>
+<p>订单表（order_id，所属用户，所属场次，座位信息，订单状态，订单价格，支付时间） </p>
+<p>评论表（comment_id，评论用户，评论内容，所属电影，评论时间）  </p>
+<p>电影表（movie_id，电影中文名字，电影外文名字，导演，演员，电影简介，时长，电影类型，评分，票房，评论总数，上映时间，制片地区，海报地址，电影状态） </p>
+<p>以上数据满足3NF，可以进行物理结构设计。</p>
+<h4 id="2-物理结构设计"><a href="#2-物理结构设计" class="headerlink" title="(2)  物理结构设计"></a>(2)  物理结构设计</h4><p>表1                  用户表</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>长度</th>
+<th>小数点</th>
+<th>是否为null</th>
+<th>是否为主键</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>user_id</td>
+<td>bigint</td>
+<td>10</td>
+<td></td>
+<td>否</td>
+<td>√</td>
+</tr>
+<tr>
+<td>user_name</td>
+<td>varchar</td>
+<td>20</td>
+<td></td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>user_pwd</td>
+<td>varchar</td>
+<td>20</td>
+<td></td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>user_email</td>
+<td>varchar</td>
+<td>30</td>
+<td></td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>user_role</td>
+<td>int</td>
+<td>10</td>
+<td></td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>user_headImg</td>
+<td>varchar</td>
+<td>100</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>表2                 电影院表</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>长度</th>
+<th>小数点</th>
+<th>是否为null</th>
+<th>是否为主键</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>cinema_id</td>
+<td>bigint</td>
+<td>11</td>
+<td></td>
+<td>否</td>
+<td>√</td>
+</tr>
+<tr>
+<td>cinema_name</td>
+<td>varchar</td>
+<td>40</td>
+<td></td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>cinema_address</td>
+<td>varchar</td>
+<td>150</td>
+<td></td>
+<td>否</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>表3                 放映厅表</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>长度</th>
+<th>小数点</th>
+<th>是否为null</th>
+<th>是否为主键</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>hall_id</td>
+<td>int</td>
+<td>10</td>
+<td></td>
+<td>否</td>
+<td>√</td>
+</tr>
+<tr>
+<td>hall_name</td>
+<td>varchar</td>
+<td>20</td>
+<td></td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>hall_capacity</td>
+<td>int</td>
+<td>10</td>
+<td></td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>cinema_id</td>
+<td>bigint</td>
+<td>10</td>
+<td></td>
+<td>否</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>表4                 场次表</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>长度</th>
+<th>小数点</th>
+<th>是否为null</th>
+<th>是否为主键</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>schedule_id</td>
+<td>bigint</td>
+<td>10</td>
+<td></td>
+<td>否</td>
+<td>√</td>
+</tr>
+<tr>
+<td>hall_id</td>
+<td>bigint</td>
+<td>10</td>
+<td></td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>movie_id</td>
+<td>bigint</td>
+<td>10</td>
+<td></td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>schedule_startTime</td>
+<td>varchar</td>
+<td>20</td>
+<td></td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>schedule_price</td>
+<td>int</td>
+<td>10</td>
+<td></td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>schedule_remain</td>
+<td>int</td>
+<td>10</td>
+<td></td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>schedule_state</td>
+<td>int</td>
+<td>10</td>
+<td></td>
+<td>否</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>表5                 订单表</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>长度</th>
+<th>小数点</th>
+<th>是否为null</th>
+<th>是否为主键</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>order_id</td>
+<td>varchar</td>
+<td>20</td>
+<td></td>
+<td>否</td>
+<td>√</td>
+</tr>
+<tr>
+<td>user_id</td>
+<td>bigint</td>
+<td>10</td>
+<td></td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>schedule_id</td>
+<td>bigint</td>
+<td>10</td>
+<td></td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>order_position</td>
+<td>varchar</td>
+<td>20</td>
+<td></td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>order_state</td>
+<td>int</td>
+<td>10</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>order_price</td>
+<td>int</td>
+<td>10</td>
+<td></td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>order_time</td>
+<td>datetime</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>表6                评论表</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>长度</th>
+<th>小数点</th>
+<th>是否为null</th>
+<th>是否为主键</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>comment_id</td>
+<td>bigint</td>
+<td>10</td>
+<td></td>
+<td>否</td>
+<td>√</td>
+</tr>
+<tr>
+<td>user_id</td>
+<td>bigint</td>
+<td>10</td>
+<td></td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>comment_content</td>
+<td>varchar</td>
+<td>150</td>
+<td></td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>movie_id</td>
+<td>bigint</td>
+<td>10</td>
+<td></td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>comment_time</td>
+<td>datetime</td>
+<td></td>
+<td></td>
+<td>否</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>表7                  电影表</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>长度</th>
+<th>小数点</th>
+<th>是否为null</th>
+<th>是否为主键</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>movie_id</td>
+<td>bigint</td>
+<td>10</td>
+<td></td>
+<td>否</td>
+<td>√</td>
+</tr>
+<tr>
+<td>movie_cn_name</td>
+<td>varchar</td>
+<td>30</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>movie_fg_name</td>
+<td>varchar</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>movie_actor</td>
+<td>varchar</td>
+<td>100</td>
+<td></td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>movie_director</td>
+<td>varchar</td>
+<td>20</td>
+<td></td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>movie_detail</td>
+<td>varchar</td>
+<td>350</td>
+<td></td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>movie_duration</td>
+<td>varchar</td>
+<td>20</td>
+<td></td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>movie_type</td>
+<td>varchar</td>
+<td>20</td>
+<td></td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>movie_score</td>
+<td>float</td>
+<td>10</td>
+<td>1</td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>movie_boxOffice</td>
+<td>float</td>
+<td>10</td>
+<td>4</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>movie_commentCount</td>
+<td>bigint</td>
+<td>10</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>movie_releaseDate</td>
+<td>date</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>movie_country</td>
+<td>varchar</td>
+<td>20</td>
+<td></td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>movie_picture</td>
+<td>varchar</td>
+<td>100</td>
+<td></td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>movie_state</td>
+<td>int</td>
+<td>3</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id="项目实现"><a href="#项目实现" class="headerlink" title="项目实现"></a>项目实现</h1><h2 id="前台的各模块界面与实现"><a href="#前台的各模块界面与实现" class="headerlink" title="前台的各模块界面与实现"></a>前台的各模块界面与实现</h2><h3 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h3><p><img src="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211122182820534.png" alt="image-20211122182820534"></p>
+<p>​                                                                                                                        图19 登陆界面截图</p>
+<p><strong>主要代码：</strong><br><strong>Web层：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;login&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> JSONObject <span class="title">login</span><span class="params">(String user_name, String user_pwd, HttpServletRequest request)</span> </span>&#123;</span><br><span class="line">   JSONObject obj = <span class="keyword">new</span> JSONObject();</span><br><span class="line">   User user = userService.login(user_name, user_pwd);</span><br><span class="line">   <span class="comment">//空指针异常</span></span><br><span class="line">   <span class="keyword">if</span>(user != <span class="keyword">null</span>) &#123;</span><br><span class="line">      <span class="comment">//是否存在</span></span><br><span class="line">      <span class="keyword">if</span> (user.getUser_role()==<span class="number">999</span>)&#123;</span><br><span class="line">         obj.put(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;exits&quot;</span>);</span><br><span class="line">         <span class="keyword">return</span> obj;</span><br><span class="line">      &#125;</span><br><span class="line">      HttpSession session = request.getSession();</span><br><span class="line">      session.setAttribute(<span class="string">&quot;user&quot;</span>, user);</span><br><span class="line">      <span class="keyword">if</span>(user.getUser_role() == <span class="number">0</span>) &#123;</span><br><span class="line">         obj.put(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;usersuccess&quot;</span>);</span><br><span class="line">         obj.put(<span class="string">&quot;data&quot;</span>, user);</span><br><span class="line">         <span class="keyword">return</span> obj;</span><br><span class="line">      &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">         obj.put(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;adminsuccess&quot;</span>);</span><br><span class="line">         obj.put(<span class="string">&quot;data&quot;</span>, user);</span><br><span class="line">         <span class="keyword">return</span> obj;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   obj.put(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;fail&quot;</span>);</span><br><span class="line">   <span class="keyword">return</span> obj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>业务层：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Transactional(propagation=Propagation.REQUIRED,readOnly=true)</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> User <span class="title">login</span><span class="params">(String user_name, String user_pwd)</span> </span>&#123;</span><br><span class="line">   List&lt;User&gt; userList = usermapper.findUserByName(user_name);</span><br><span class="line">   <span class="keyword">int</span> size = userList.size();</span><br><span class="line">   System.out.println(size);</span><br><span class="line">   <span class="comment">//不存在的话</span></span><br><span class="line">   <span class="keyword">if</span> (size==<span class="number">0</span>)&#123;</span><br><span class="line">      User user = <span class="keyword">new</span> User();</span><br><span class="line">      user.setUser_role(<span class="number">999</span>);</span><br><span class="line">      <span class="keyword">return</span> user;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">for</span>(User user : userList) &#123;</span><br><span class="line">      <span class="comment">//密码正确的话</span></span><br><span class="line">      <span class="keyword">if</span>(user.getUser_pwd().equals(user_pwd)) &#123;</span><br><span class="line">         <span class="keyword">return</span> user;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>持久层：</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;sortMovieByCount&quot;</span> <span class="attr">resultMap</span>=<span class="string">&quot;BaseResultMap&quot;</span>&gt;</span></span><br><span class="line">   select * from movie where movie_state = 1 order by movie_commentCount</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="买票"><a href="#买票" class="headerlink" title="买票"></a>买票</h3><p>需要增加订单，减少座位，增加票房，要一起成功，一起失败</p>
+<p><img src="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211122183032798.png" alt="image-20211122183032798"></p>
+<p>​                                                                                                            图20 买票界面截图</p>
+<p><strong>主要代码：</strong><br><strong>Web层：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;buyTickets&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> JSONObject <span class="title">buyTickets</span><span class="params">(<span class="meta">@RequestParam(&quot;schedule_id&quot;)</span><span class="keyword">long</span> schedule_id,<span class="meta">@RequestParam(&quot;position[]&quot;)</span>String[] position,<span class="meta">@RequestParam(&quot;price&quot;)</span><span class="keyword">int</span> price,HttpServletRequest request)</span> </span>&#123;</span><br><span class="line">   <span class="comment">//获取登录用户</span></span><br><span class="line">   User user = (User)request.getSession().getAttribute(<span class="string">&quot;user&quot;</span>);</span><br><span class="line">   JSONObject obj = <span class="keyword">new</span> JSONObject();</span><br><span class="line">   <span class="keyword">if</span>(user == <span class="keyword">null</span>) &#123;</span><br><span class="line">      obj.put(<span class="string">&quot;code&quot;</span>,<span class="number">200</span>);</span><br><span class="line">      obj.put(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;您未登录,登录之后才可购票~&quot;</span>);</span><br><span class="line">   &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">if</span>(position.length == orderService.addOrder(schedule_id,position,price,user)) &#123;</span><br><span class="line">         obj.put(<span class="string">&quot;code&quot;</span>,<span class="number">0</span>);</span><br><span class="line">         obj.put(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;购票成功~&quot;</span>);</span><br><span class="line">      &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">         obj.put(<span class="string">&quot;code&quot;</span>,<span class="number">200</span>);</span><br><span class="line">         obj.put(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;购票失败~&quot;</span>);</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> obj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>业务层：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Transactional(propagation=Propagation.REQUIRED,rollbackFor=Exception.class)</span></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> Integer <span class="title">addOrder</span><span class="params">(<span class="keyword">long</span> schedule_id, String[] position, <span class="keyword">int</span> price, User user)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">int</span> done = <span class="number">0</span>;</span><br><span class="line">      <span class="comment">//总价/票的数量=单价</span></span><br><span class="line">      <span class="keyword">int</span> order_price = price/position.length;</span><br><span class="line">      String user_id = <span class="string">&quot;&quot;</span>;</span><br><span class="line">      <span class="comment">//补零，保证订单的id长度相同</span></span><br><span class="line">      <span class="keyword">switch</span>(String.valueOf(user.getUser_id()).length()) &#123;</span><br><span class="line">         <span class="keyword">case</span> <span class="number">1</span>:user_id=<span class="string">&quot;000&quot;</span>+ String.valueOf(user.getUser_id()); <span class="keyword">break</span>;</span><br><span class="line">         case2:user_id= <span class="string">&quot;00&quot;</span> + String.valueOf(user.getUser_id()); <span class="keyword">break</span>;</span><br><span class="line">         <span class="keyword">case</span> <span class="number">3</span>:user_id= <span class="string">&quot;0&quot;</span> + String.valueOf(user.getUser_id()); <span class="keyword">break</span>;</span><br><span class="line">         <span class="keyword">case</span> <span class="number">4</span>:user_id= String.valueOf(user.getUser_id()); <span class="keyword">break</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">//有几张票，添加几个订单</span></span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; position.length;i++) &#123;</span><br><span class="line">         Order order = <span class="keyword">new</span> Order();</span><br><span class="line">         String order_id = <span class="string">&quot;&quot;</span>;</span><br><span class="line">         Date date = <span class="keyword">new</span> Date();</span><br><span class="line">         SimpleDateFormat dateFormat = <span class="keyword">new</span> SimpleDateFormat(<span class="string">&quot;YYYYMMdd&quot;</span>);</span><br><span class="line">         <span class="comment">//id等于当前日期+用户补零后的id</span></span><br><span class="line">         order_id += dateFormat.format(date);</span><br><span class="line">         order_id += user_id;</span><br><span class="line">         String index = <span class="string">&quot;&quot;</span>;</span><br><span class="line">         <span class="comment">//再把座位号去除汉字，拼到id上</span></span><br><span class="line">         <span class="keyword">switch</span>(position[i].length()) &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">               index = <span class="string">&quot;0&quot;</span> + position[i].replaceAll(<span class="string">&quot;排&quot;</span>, <span class="string">&quot;0&quot;</span>);</span><br><span class="line">               index = index.replaceAll(<span class="string">&quot;座&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">               <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">               <span class="keyword">if</span>(position[i].charAt(<span class="number">2</span>)&gt;=<span class="number">48</span>&amp;&amp;position[i].charAt(<span class="number">2</span>)&lt;=<span class="number">57</span>) &#123;</span><br><span class="line">                  index = <span class="string">&quot;0&quot;</span>+ position[i].replaceAll(<span class="string">&quot;排&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">                  index = index.replaceAll(<span class="string">&quot;座&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">               &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                  index = position[i].replaceAll(<span class="string">&quot;排&quot;</span>, <span class="string">&quot;0&quot;</span>);</span><br><span class="line">                  index = index.replaceAll(<span class="string">&quot;座&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">               &#125;</span><br><span class="line">               <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">6</span>:</span><br><span class="line">               index = position[i].replaceAll(<span class="string">&quot;排&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">               index = index.replaceAll(<span class="string">&quot;座&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">               <span class="keyword">break</span>;</span><br><span class="line">         &#125;</span><br><span class="line">         order_id += index;</span><br><span class="line">         order.setOrder_id(order_id);</span><br><span class="line">         order.setOrder_position(position[i]);</span><br><span class="line">         order.setSchedule_id(schedule_id);</span><br><span class="line">         order.setUser_id(user.getUser_id());</span><br><span class="line">         order.setOrder_price(order_price);</span><br><span class="line">         order.setOrder_time(<span class="keyword">new</span> Date());</span><br><span class="line">         Integer rs = <span class="keyword">this</span>.orderMapper.addOrder(order);</span><br><span class="line">         <span class="comment">//座位-1</span></span><br><span class="line">         Integer rs1=<span class="keyword">this</span>.scheduleMapper.delScheduleRemain(schedule_id);</span><br><span class="line">         done++;</span><br><span class="line">      &#125;</span><br><span class="line"><span class="comment">//    System.out.println(&quot;----------------------------&quot;);</span></span><br><span class="line"><span class="comment">//    int i=10/0;</span></span><br><span class="line"><span class="comment">//    System.out.println(&quot;----------------------&quot;);</span></span><br><span class="line"><span class="comment">//    System.out.println(10/0);</span></span><br><span class="line">      <span class="comment">//增加票房</span></span><br><span class="line">      <span class="keyword">float</span> sum = (<span class="keyword">float</span>)price/<span class="number">10000</span>;</span><br><span class="line">      Integer rs2=<span class="keyword">this</span>.movieMapper.changeMovieBoxOffice(sum, <span class="keyword">this</span>.scheduleMapper.findScheduleById(schedule_id).getMovie_id());</span><br><span class="line">      <span class="keyword">return</span> done;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>持久层：</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">&quot;addOrder&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;com.entity.Order&quot;</span>&gt;</span></span><br><span class="line">insert into       orderinfo(order_id,order_position,schedule_id,user_id,order_price, order_time)</span><br><span class="line">values(#&#123;order_id&#125;,#&#123;order_position&#125;,#&#123;schedule_id&#125;,#&#123;user_id&#125;,#&#123;order_price&#125;,#&#123;order_time&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">update</span> <span class="attr">id</span>=<span class="string">&quot;delScheduleRemain&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;long&quot;</span>&gt;</span></span><br><span class="line">update schedule set schedule_remain = schedule_remain - 1 </span><br><span class="line">where schedule_id = #&#123;schedule_id&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">update</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">update</span> <span class="attr">id</span>=<span class="string">&quot;changeMovieBoxOffice&quot;</span>&gt;</span></span><br><span class="line">   update movie set movie_boxOffice=movie_boxOffice + #&#123;movie_boxOffice&#125; </span><br><span class="line">where movie_id = #&#123;movie_id&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">update</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="后台的各模块界面与实现"><a href="#后台的各模块界面与实现" class="headerlink" title="后台的各模块界面与实现"></a>后台的各模块界面与实现</h2><h3 id="新增电影"><a href="#新增电影" class="headerlink" title="新增电影"></a>新增电影</h3><p><img src="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211122183151440.png" alt="image-20211122183151440"></p>
+<p>​                                                                                                                                 图21 新增电影截图</p>
+<p><strong>主要代码：</strong><br><strong>Web层：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;addMovie&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> JSONObject <span class="title">addMovie</span><span class="params">(<span class="meta">@RequestParam(value=&quot;file&quot;,required=false)</span> MultipartFile file,Movie movie,HttpServletRequest request)</span> <span class="keyword">throws</span> IOException  </span>&#123;</span><br><span class="line">   String str = file.getOriginalFilename();</span><br><span class="line">   String name = UUIDUtil.getUUID() +     str.substring(str.lastIndexOf(<span class="string">&quot;.&quot;</span>));</span><br><span class="line">   String path = request.getServletContext().getRealPath(<span class="string">&quot;/upload/movies&quot;</span>) + <span class="string">&quot;/&quot;</span> + name;</span><br><span class="line">   String filePath = <span class="string">&quot;../upload/movies/&quot;</span> + name;  </span><br><span class="line">   movie.setMovie_picture(filePath);</span><br><span class="line">   Date date = <span class="keyword">new</span> Date();</span><br><span class="line">   java.sql.Date releaseDate = <span class="keyword">new</span> java.sql.Date(date.getYear(), date.getMonth(), date.getDay());</span><br><span class="line">   <span class="comment">//SimpleDateFormat dateFormat = new SimpleDateFormat(&quot;YYYY-MM-dd&quot;);</span></span><br><span class="line">   <span class="keyword">float</span> random = <span class="number">5</span> + (<span class="keyword">new</span> Random().nextFloat() * <span class="number">4</span>);</span><br><span class="line">   DecimalFormat fnum = <span class="keyword">new</span> DecimalFormat(<span class="string">&quot;##0.0&quot;</span>);</span><br><span class="line">   String score = fnum.format(random);</span><br><span class="line">   movie.setMovie_score(Float.parseFloat(score));</span><br><span class="line">   movie.setReleaseDate(releaseDate);</span><br><span class="line">   Integer rs = movieService.addMovie(movie);</span><br><span class="line">   JSONObject obj = <span class="keyword">new</span> JSONObject();</span><br><span class="line">   <span class="keyword">if</span>(rs &gt; <span class="number">0</span>) &#123;</span><br><span class="line">      file.transferTo(<span class="keyword">new</span> File(path));</span><br><span class="line">      obj.put(<span class="string">&quot;code&quot;</span>, <span class="number">0</span>);</span><br><span class="line">      obj.put(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;添加成功~&quot;</span>);</span><br><span class="line">   &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">      obj.put(<span class="string">&quot;code&quot;</span>, <span class="number">200</span>);</span><br><span class="line">      obj.put(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;添加失败~&quot;</span>);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> obj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>业务层：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Transactional(propagation=Propagation.REQUIRED,rollbackFor=Exception.class)</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Integer <span class="title">addMovie</span><span class="params">(Movie movie)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">return</span> <span class="keyword">this</span>.movieMapper.addMovie(movie);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>持久层：</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">&quot;addMovie&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;com.entity.Movie&quot;</span>&gt;</span></span><br><span class="line">   insert into movie(movie_cn_name,movie_fg_name,movie_actor,movie_director,movie_detail,movie_duration,movie_type,movie_score,movie_releaseDate,movie_country,movie_picture)</span><br><span class="line">   values(#&#123;movie_cn_name&#125;,#&#123;movie_fg_name&#125;,#&#123;movie_actor&#125;,#&#123;movie_director&#125;,#&#123;movie_detail&#125;,#&#123;movie_duration&#125;,#&#123;movie_type&#125;,#&#123;movie_score&#125;,#&#123;movie_releaseDate&#125;,#&#123;movie_country&#125;,#&#123;movie_picture&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="下架场次"><a href="#下架场次" class="headerlink" title="下架场次"></a>下架场次</h3><p>​                                                              <img src="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211122183309477.png" alt="image-20211122183309477"></p>
+<p>​                                                                                                                         图22 下架场次截图</p>
+<p><strong>主要代码：</strong><br><strong>Web层：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;addMovie&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> JSONObject <span class="title">addMovie</span><span class="params">(<span class="meta">@RequestParam(value=&quot;file&quot;,required=false)</span> MultipartFile file,Movie movie,HttpServletRequest request)</span> <span class="keyword">throws</span> IOException  </span>&#123;</span><br><span class="line">   String str = file.getOriginalFilename();</span><br><span class="line">   String name = UUIDUtil.getUUID() +     str.substring(str.lastIndexOf(<span class="string">&quot;.&quot;</span>));</span><br><span class="line">   String path = request.getServletContext().getRealPath(<span class="string">&quot;/upload/movies&quot;</span>) + <span class="string">&quot;/&quot;</span> + name;</span><br><span class="line">   String filePath = <span class="string">&quot;../upload/movies/&quot;</span> + name;  </span><br><span class="line">   movie.setMovie_picture(filePath);</span><br><span class="line">   Date date = <span class="keyword">new</span> Date();</span><br><span class="line">   java.sql.Date releaseDate = <span class="keyword">new</span> java.sql.Date(date.getYear(), date.getMonth(), date.getDay());</span><br><span class="line">   <span class="comment">//SimpleDateFormat dateFormat = new SimpleDateFormat(&quot;YYYY-MM-dd&quot;);</span></span><br><span class="line">   <span class="keyword">float</span> random = <span class="number">5</span> + (<span class="keyword">new</span> Random().nextFloat() * <span class="number">4</span>);</span><br><span class="line">   DecimalFormat fnum = <span class="keyword">new</span> DecimalFormat(<span class="string">&quot;##0.0&quot;</span>);</span><br><span class="line">   String score = fnum.format(random);</span><br><span class="line">   movie.setMovie_score(Float.parseFloat(score));</span><br><span class="line">   movie.setReleaseDate(releaseDate);</span><br><span class="line">   Integer rs = movieService.addMovie(movie);</span><br><span class="line">   JSONObject obj = <span class="keyword">new</span> JSONObject();</span><br><span class="line">   <span class="keyword">if</span>(rs &gt; <span class="number">0</span>) &#123;</span><br><span class="line">      file.transferTo(<span class="keyword">new</span> File(path));</span><br><span class="line">      obj.put(<span class="string">&quot;code&quot;</span>, <span class="number">0</span>);</span><br><span class="line">      obj.put(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;添加成功~&quot;</span>);</span><br><span class="line">   &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">      obj.put(<span class="string">&quot;code&quot;</span>, <span class="number">200</span>);</span><br><span class="line">      obj.put(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;添加失败~&quot;</span>);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> obj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>业务层：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Transactional(propagation=Propagation.REQUIRED,rollbackFor=Exception.class)</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Integer <span class="title">deleteSchedule</span><span class="params">(<span class="keyword">long</span> schedule_id)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">return</span> <span class="keyword">this</span>.scheduleMapper.deleteSchedule(schedule_id);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>持久层：</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">update</span> <span class="attr">id</span>=<span class="string">&quot;deleteSchedule&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;long&quot;</span>&gt;</span></span><br><span class="line">   update schedule set schedule_state=0 where schedule_id = #&#123;schedule_id&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">update</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>本次基于SSM的网上购票系统，已经可以进行一些简单的买票，评论，查看电影信息，电影院信息，后台的一些增删改查了.由于对SSM知识的了解较少，开发过程中遇到很多困难，比如：welcome-file页面内，相对地址跳转的问题。UUID。爬猫眼电影的数据采集的过程。经过老师的指导以及查阅资料，能够找到问题的根本所在并最终解决问题，同时自己的编程水平有也了点滴进步。系统参考了猫眼电影购票系统，开发过程中贴合实际，从用户角度进行功能需求开发，以此让用户拥有更好的购票体验</p>
+<p>通过本次系统的开发与设计，我认识到前后端分离的好处，明白了在一个项目开发之前要进行很多的准备工作，例如需求分析、数据库设计等等。正是因为有了这些前期准备，才使得系统开发过程中减少不必要的工作量与争议，具备更高的效率。</p>
+<p>由于自己能力的不足，开发出来的系统功能不是很完善，还有一些没有实现的功能，比如，主页面的搜索功能，根据区域找电影的功能，还有影院模块，榜单模块都是未实现的部分。</p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] Bruce Eckel，计算机科学丛书：Java编程思想（第4版）[M]，机械工业出版社，2007，35页</p>
+<p>[2] Craig Walls，Spring实战 [M]，人民邮电出版社，2020，24页</p>
+<p>[3] 王耀，深入理解Spring MVC源代码[M]，中国水利水电出版社，2019，7页</p>
+<p>[4] 江荣波，MyBatis 3源码深度解析[M]，清华大学出版社，2019，14页</p>
+<p>[5] <a target="_blank" rel="noopener" href="https://smallblog.cn,jquery/">https://smallblog.cn，jQuery</a> 的Ajax发送数据[OL]，小政，<a target="_blank" rel="noopener" href="https://smallbl/">https://smallbl</a> og.cn/blog/33，2021</p>
+<h2 id="写在后面的"><a href="#写在后面的" class="headerlink" title="写在后面的"></a>写在后面的</h2><p><a target="_blank" rel="noopener" href="https://gitee.com/wangyi12/pic-bed/raw/master/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20211122185442.jpg">15MB的原图，必须登录才能看到</a></p>
+<p><img src="https://gitee.com/wangyi12/pic-bed/raw/master/img/bysjqweqweqwes.png" alt="bysjqweqweqwes"></p>
+<p>这次最大的收获应该就是会用word记笔记了。<del>没有对比就不知道md有多好用</del></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/zhongshengguji/SSM-">源码已分享到github上</a></p>
+<p><del>写md文档的时候，才发现去打印的版本里面竟然还有俩错误，淦</del></p>
+
+    </div>
+
+    
+    
+    
+    
+      <div>
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:24px;">-------------一键三连加关注，包包金橙挡不住-------------</div>
+    
+</div>
+      </div>
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>王一
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/2021/11/22/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1%E7%BB%88%E7%A8%BF/" title="我的毕业设计————网上购票系统的设计与实现">http://example.com/2021/11/22/毕业设计终稿/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" rel="tag"># 毕业设计</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/11/15/%E6%89%8B%E6%9C%BA%E5%8F%98%E7%A0%96%E5%AE%9E%E5%BD%95/" rel="prev" title="手机变砖实录">
+      <i class="fa fa-chevron-left"></i> 手机变砖实录
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC81NDY4Ny8zMTE1OA=="></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%BA-%E6%96%87-%E6%91%98-%E8%A6%81"><span class="nav-number">1.</span> <span class="nav-text">论 文 摘 要</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">2.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B"><span class="nav-number">2.1.</span> <span class="nav-text">项目简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E6%8A%80%E6%9C%AF"><span class="nav-number">2.2.</span> <span class="nav-text">关键技术</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#java%E7%AE%80%E4%BB%8B"><span class="nav-number">2.2.1.</span> <span class="nav-text">java简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql%E7%AE%80%E4%BB%8B"><span class="nav-number">2.2.2.</span> <span class="nav-text">mysql简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSM%E6%A1%86%E6%9E%B6%E7%AE%80%E4%BB%8B"><span class="nav-number">2.2.3.</span> <span class="nav-text">SSM框架简介</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Spring"><span class="nav-number">2.2.3.1.</span> <span class="nav-text">Spring</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SpringMVC"><span class="nav-number">2.2.3.2.</span> <span class="nav-text">SpringMVC</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MyBatis"><span class="nav-number">2.2.3.3.</span> <span class="nav-text">MyBatis</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="nav-number">3.</span> <span class="nav-text">需求分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD%E9%9C%80%E6%B1%82"><span class="nav-number">3.1.</span> <span class="nav-text">功能需求</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E5%8A%9F%E8%83%BD"><span class="nav-number">3.1.1.</span> <span class="nav-text">用户功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%A1%E7%90%86%E5%91%98%E5%8A%9F%E8%83%BD"><span class="nav-number">3.1.2.</span> <span class="nav-text">管理员功能</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%A7%E8%83%BD%E9%9C%80%E6%B1%82"><span class="nav-number">3.2.</span> <span class="nav-text">性能需求</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A1%AC%E4%BB%B6%E7%8E%AF%E5%A2%83"><span class="nav-number">3.2.1.</span> <span class="nav-text">硬件环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E7%8E%AF%E5%A2%83"><span class="nav-number">3.2.2.</span> <span class="nav-text">软件环境</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1"><span class="nav-number">4.</span> <span class="nav-text">总体设计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="nav-number">4.1.</span> <span class="nav-text">系统架构设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EF%BC%88%E4%BA%8C%EF%BC%89%E7%B3%BB%E7%BB%9F%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1"><span class="nav-number">4.2.</span> <span class="nav-text">（二）系统功能模块设计</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1"><span class="nav-number">5.</span> <span class="nav-text">详细设计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E5%8A%9F%E8%83%BD%E8%AE%BE%E8%AE%A1"><span class="nav-number">5.1.</span> <span class="nav-text">系统功能设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E5%9B%BE"><span class="nav-number">5.1.1.</span> <span class="nav-text">类图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%B6%E5%BA%8F%E5%9B%BE"><span class="nav-number">5.1.2.</span> <span class="nav-text">时序图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E6%97%B6%E7%9A%84%E9%A1%BA%E5%BA%8F%E5%9B%BE"><span class="nav-number">5.1.2.1.</span> <span class="nav-text">用户登录时的顺序图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E4%B9%B0%E7%A5%A8%E9%A1%BA%E5%BA%8F%E5%9B%BE"><span class="nav-number">5.1.2.2.</span> <span class="nav-text">用户买票顺序图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">5.1.3.</span> <span class="nav-text">流程图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%92%E8%89%B2%E7%99%BB%E5%BD%95%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">5.1.3.1.</span> <span class="nav-text">角色登录流程图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E6%B3%A8%E5%86%8C%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">5.1.3.2.</span> <span class="nav-text">用户注册流程图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E4%B9%B0%E7%A5%A8%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">5.1.3.3.</span> <span class="nav-text">用户买票流程图</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1"><span class="nav-number">5.2.</span> <span class="nav-text">数据库设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%A6%82%E5%BF%B5%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%88E-R%E5%9B%BE%EF%BC%89"><span class="nav-number">5.2.1.</span> <span class="nav-text">1.概念结构设计（E-R图）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E7%94%A8%E6%88%B7%E5%AE%9E%E4%BD%93%E7%B1%BB"><span class="nav-number">5.2.1.1.</span> <span class="nav-text">(1)  用户实体类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%84%E8%AE%BA%E5%AE%9E%E4%BD%93%E7%B1%BB"><span class="nav-number">5.2.1.2.</span> <span class="nav-text">评论实体类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%B5%E5%BD%B1%E9%99%A2%E5%AE%9E%E4%BD%93%E7%B1%BB"><span class="nav-number">5.2.1.3.</span> <span class="nav-text">电影院实体类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%94%BE%E6%98%A0%E5%8E%85%E5%AE%9E%E4%BD%93%E7%B1%BB"><span class="nav-number">5.2.1.4.</span> <span class="nav-text">放映厅实体类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%BA%E6%AC%A1%E5%AE%9E%E4%BD%93%E7%B1%BB"><span class="nav-number">5.2.1.5.</span> <span class="nav-text">场次实体类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A2%E5%8D%95%E5%AE%9E%E4%BD%93%E7%B1%BB"><span class="nav-number">5.2.1.6.</span> <span class="nav-text">订单实体类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%B5%E5%BD%B1%E4%BF%A1%E6%81%AF%E5%AE%9E%E4%BD%93%E7%B1%BB"><span class="nav-number">5.2.1.7.</span> <span class="nav-text">电影信息实体类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-%E7%B3%BB%E7%BB%9F%E6%80%BB%E4%BD%93E-R%E5%9B%BE"><span class="nav-number">5.2.1.8.</span> <span class="nav-text">(8)  系统总体E-R图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%A1%A8%E7%BB%93%E6%9E%84"><span class="nav-number">5.2.2.</span> <span class="nav-text">2.表结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="nav-number">5.2.2.1.</span> <span class="nav-text">(1)  逻辑结构设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E7%89%A9%E7%90%86%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="nav-number">5.2.2.2.</span> <span class="nav-text">(2)  物理结构设计</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E5%AE%9E%E7%8E%B0"><span class="nav-number">6.</span> <span class="nav-text">项目实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E5%8F%B0%E7%9A%84%E5%90%84%E6%A8%A1%E5%9D%97%E7%95%8C%E9%9D%A2%E4%B8%8E%E5%AE%9E%E7%8E%B0"><span class="nav-number">6.1.</span> <span class="nav-text">前台的各模块界面与实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%99%BB%E5%BD%95"><span class="nav-number">6.1.1.</span> <span class="nav-text">登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B9%B0%E7%A5%A8"><span class="nav-number">6.1.2.</span> <span class="nav-text">买票</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8E%E5%8F%B0%E7%9A%84%E5%90%84%E6%A8%A1%E5%9D%97%E7%95%8C%E9%9D%A2%E4%B8%8E%E5%AE%9E%E7%8E%B0"><span class="nav-number">6.2.</span> <span class="nav-text">后台的各模块界面与实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E5%A2%9E%E7%94%B5%E5%BD%B1"><span class="nav-number">6.2.1.</span> <span class="nav-text">新增电影</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E6%9E%B6%E5%9C%BA%E6%AC%A1"><span class="nav-number">6.2.2.</span> <span class="nav-text">下架场次</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">7.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-number">8.</span> <span class="nav-text">参考文献</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E5%90%8E%E9%9D%A2%E7%9A%84"><span class="nav-number">8.1.</span> <span class="nav-text">写在后面的</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王一"
+      src="/images/1.gif">
+  <p class="site-author-name" itemprop="name">王一</p>
+  <div class="site-description" itemprop="description">你进入游戏行业，就是为了让孩子们上瘾，让人们点击广告吗———美食家五叔评《纪念碑谷》</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://zhongshengguji.github.io/" title="GitHub → https:&#x2F;&#x2F;zhongshengguji.github.io&#x2F;" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/zhong-sheng-gu-ji-24" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;zhong-sheng-gu-ji-24" rel="noopener" target="_blank"><i class="gratipay fa-fw"></i>知乎</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/jhfgjhg1" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;jhfgjhg1" rel="noopener" target="_blank"><i class="codiepie fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/82340048" title="B站 → https:&#x2F;&#x2F;space.bilibili.com&#x2F;82340048" rel="noopener" target="_blank"><i class="bold fa-fw"></i>B站</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="link fa-fw"></i>
+      我的学校
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.bilibili.com/" title="https:&#x2F;&#x2F;www.bilibili.com&#x2F;" rel="noopener" target="_blank">B站</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.kfu.edu.cn/" title="http:&#x2F;&#x2F;www.kfu.edu.cn&#x2F;" rel="noopener" target="_blank">开封大学</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.shanghuaxueyuan.com/" title="http:&#x2F;&#x2F;www.shanghuaxueyuan.com&#x2F;" rel="noopener" target="_blank">裳华职业技术中专</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2021-11 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">王一</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">294k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">4:27</span>
+</div>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共85.2k字</span>
+</div>
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">总访客数<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+$(document).ready(function() {
+
+    var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+    var countOffset = 20000;  // 初始化首次数据
+
+    function fixCount() {            
+       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
+        {
+            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
+            clearInterval(int);
+        }                  
+        if ($("#busuanzi_container_site_pv").css("display") != "none")
+        {
+            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // 加上初始数据 
+            clearInterval(int); // 停止检测
+        }  
+    }
+       	
+});
+</script> 
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+</body>
+</html>
