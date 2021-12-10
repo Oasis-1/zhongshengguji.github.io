@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="总结收获 SQL Server端口号1443，clickhouse端口号8123windows下是9000？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="实习日记第二周————你已经会用spring写helloWorld了，接下来我们来整合一个分布式定时任务的数据同步的任务把">
+<meta property="og:url" content="http://example.com/2021/12/06/%E7%AC%AC%E4%BA%8C%E5%91%A8/index.html">
+<meta property="og:site_name" content="Oasis">
+<meta property="og:description" content="总结收获 SQL Server端口号1443，clickhouse端口号8123windows下是9000？">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211209152207004.png">
+<meta property="og:image" content="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211209123624337.png">
+<meta property="og:image" content="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211209100412777.png">
+<meta property="og:image" content="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211208103441562.png">
+<meta property="og:image" content="https://gitee.com/wangyi12/pic-bed/raw/master/img/QQ%E6%88%AA%E5%9B%BE20211208171509.png">
+<meta property="og:image" content="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211208145509374.png">
+<meta property="article:published_time" content="2021-12-06T12:46:25.000Z">
+<meta property="article:modified_time" content="2021-12-10T06:47:24.427Z">
+<meta property="article:author" content="王一">
+<meta property="article:tag" content="实习日记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211209152207004.png">
+
+<link rel="canonical" href="http://example.com/2021/12/06/%E7%AC%AC%E4%BA%8C%E5%91%A8/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>实习日记第二周————你已经会用spring写helloWorld了，接下来我们来整合一个分布式定时任务的数据同步的任务把 | Oasis</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Oasis</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-resources">
+
+    <a href="/resources/" rel="section"><i class="download fa-fw"></i>资源</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/06/%E7%AC%AC%E4%BA%8C%E5%91%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/1.gif">
+      <meta itemprop="name" content="王一">
+      <meta itemprop="description" content="你进入游戏行业，就是为了让孩子们上瘾，让人们点击广告吗———美食家五叔评《纪念碑谷》">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Oasis">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          实习日记第二周————你已经会用spring写helloWorld了，接下来我们来整合一个分布式定时任务的数据同步的任务把
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-12-06 20:46:25" itemprop="dateCreated datePublished" datetime="2021-12-06T20:46:25+08:00">2021-12-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-12-10 14:47:24" itemprop="dateModified" datetime="2021-12-10T14:47:24+08:00">2021-12-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%8F%AF%E4%BB%A5%E5%85%AC%E5%BC%80%E7%9A%84%E6%97%A5%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">可以公开的日记</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h2><ol>
+<li>SQL Server端口号1443，clickhouse端口号8123<del>windows下是9000？</del></li>
+</ol>
+<span id="more"></span>
+
+
+
+<ol start="2">
+<li><p>cron表达式，定时任务的核心，springboot有自带的写一个注解@EnableScheduling和@Scheduled就能用，还有quartz分布式的有xxl-job</p>
+</li>
+<li><p>classpath</p>
+<p>使用<code>classpath:</code>这种前缀，<strong>就只能代表一个文件</strong>。</p>
+<p>使用<code>classpath*:</code>这种前缀，<strong>则可以代表多个匹配的文件</strong></p>
+<p>双星号<code>**</code>表示在任意目录下</p>
+<blockquote>
+<p>在编译打包后的项目中，根目录是<code>META-INF</code>和<code>WEB-INF</code> 。这个时候，我们可以看到classes这个文件夹，它就是我们要找的classpath。</p>
+<p>在第1个例子里，<code>classpath:entry/dev/spring-mvc.xml</code> 中，classpath就是指<code>WEB-INF/classes/</code>这个目录的路径。需要声明的一点是，使用<code>classpath:</code>这种前缀，<strong>就只能代表一个文件</strong>。</p>
+<p>在第2个例子里，<code>classpath*:**/mapper/mapping/*Mapper.xml</code>，使用<code>classpath*:</code>这种前缀，<strong>则可以代表多个匹配的文件</strong>；<code>**/mapper/mapping/*Mapper.xml</code>，双星号<code>**</code>表示在任意目录下，也就是说在<code>WEB-INF/classes/</code>下任意层的目录，只要符合后面的文件路径，都会被作为资源文件找到。</p>
+</blockquote>
+</li>
+<li><p>一般日期用单引号当成字符串输入即可，部分系统会自动解析的，然后 <del>mybatis的xml中用这个就可以确保他正确解析日期了#{date,jdbcType=DATE}</del>后面加jdbcType不知道是否有用，clickhouse也可以直接把字符串解析成日期</p>
+</li>
+</ol>
+<h3 id="疑问"><a href="#疑问" class="headerlink" title="疑问"></a>疑问</h3><ol>
+<li><p>数据源切换在哪？为啥我周末写的小demo，git上拉的原项目，service的imp上面都用@ds实现数据源的绑定呢？一般一个service中只能操作一个数据源嘛？</p>
+<p>@ds写在serviceimpl上</p>
+</li>
+<li><p>这种规模的数据库要怎么分析？字段，表之间的关系之类的。数据库开发手册？还是有跟前端交互的swagger之类的东西？</p>
+</li>
+<li><p>对于lombok的态度？学lombok的时候，讲到他是侵入式的框架，工作中不建议使用</p>
+</li>
+<li><p>为什么一定要有数据源的配置类才能启动</p>
+</li>
+</ol>
+<h4 id="整理笔记"><a href="#整理笔记" class="headerlink" title="整理笔记"></a>整理笔记</h4><blockquote>
+<p>MyBatis-Plus Service CRUD 接口 跟Mapper CRUD 接口区别</p>
+</blockquote>
+<h4 id="需要学习的内容"><a href="#需要学习的内容" class="headerlink" title="需要学习的内容"></a>需要学习的内容</h4><p><img src="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211209152207004.png" alt="image-20211209152207004"></p>
+<p>必会工具，maven，git，swagger</p>
+<p>数据库:mysql，sqlServer，Clickhouse</p>
+<p>orm：mybatis-plus，mybatis，jdbc</p>
+<p>安全，权限：shiro，springSecurity</p>
+<p>定时任务：xxl-job，quartz，@Scheduled，timer</p>
+<p>分布式：Dubbo，Zookeeper</p>
+<p>1.新建一张表</p>
+<h1 id="周一"><a href="#周一" class="headerlink" title="周一"></a>周一</h1><h2 id="工作"><a href="#工作" class="headerlink" title="工作"></a>工作</h2><ul>
+<li><p><input checked="" disabled="" type="checkbox">  从<del>gitee</del> gitlab上拉一个项目，看懂然后，类比着进行cv</p>
+<p>2021/12/9  12：36通了</p>
+<p><img src="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211209123624337.png" alt="image-20211209123624337"></p>
+</li>
+</ul>
+<h1 id="疑问-1"><a href="#疑问-1" class="headerlink" title="疑问"></a>疑问</h1><ol>
+<li><p>数据源切换在哪？为啥我周末写的小demo，git上拉的原项目，service的imp上面都用@ds实现数据源的绑定呢？</p>
+<p>配置类中，mapperscan是与 dao层的接口链接的，configproperties是与yml链接的</p>
+</li>
+<li><p>DTSCollectInfo中为啥直接就this.baseMapper,正常逻辑不应该service层里有个自动注入的mapper接口，然后调用mapper接口里的方法，里面方法跟mapper.xml对应吗？</p>
+<p><a target="_blank" rel="noopener" href="https://baomidou.com/guide/crud-interface.html#service-crud-%E6%8E%A5%E5%8F%A3">Service中CRUD的接口</a></p>
+</li>
+<li><p><del>以后正常业务，都是一百行左右的sql吗？工作内容是不是写sql，盘业务逻辑。如果是这样。那我就要改变编程思想了</del></p>
+</li>
+<li><p>数据库手册有没有，以后怎么分析这么大的数据库？</p>
+</li>
+</ol>
+<ol>
+<li><p><del>存放删除记录的表在哪？</del></p>
+<p>实体类中kafka</p>
+</li>
+<li><p>这三部分逻辑相同的部分，区别在哪？</p>
+</li>
+</ol>
+<ol>
+<li><p>切换数据源的几种方式</p>
+<p>ds里面写yaml配置的数据源的名字，写在service实现类上面</p>
+<p><del>数据源不需要切换，需要切换数据源的时候，form   数据库名字.表名</del></p>
+<p>@ds是mp提供的。写在类上面，当from没有数据库的名字的时候，默认是按yml里配置的主数据库先查找，如果设置@ds后就先去ds的数据源查找</p>
+</li>
+<li><p>mapper映射的方式</p>
+<ol>
+<li><p>mybaits-config中mappers标签里mapper写resource，class，url</p>
+</li>
+<li><p>springboot中，@mapper即可，然后xml中namespace中与@mapper所在的位置对应起来即可</p>
+<p>@mapper和@Repository区别就是前者可以单独使用，后者必须被扫描。都需要在namespace中对应</p>
+</li>
+</ol>
+</li>
+</ol>
+<p>出现date不能为null异常</p>
+<ol>
+<li>先去resultMap的对应，发现正常</li>
+<li><code>order_release.order_date,</code>发现这个指向<code>hic_order_release</code>这张表</li>
+<li><img src="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211209100412777.png" alt="image-20211209100412777"></li>
+<li>表中的列是正常的</li>
+<li>最后解决的结果是，他源数据就有null，然后新版的sql有判断，如果为null后就去另一个表取日期了（师傅帮忙）</li>
+</ol>
+<h2 id="业务逻辑"><a href="#业务逻辑" class="headerlink" title="业务逻辑"></a>业务逻辑</h2><p>每半个小时同步一天的数据，</p>
+<p>并不是一直运行的一个服务，只是每隔一段时间，同步前段的数据，然后同步的过程中每隔半个小时同步一天</p>
+<p>先判断日期，一些健壮性的判断</p>
+<ol>
+<li><p>获取上次最后更新的时间</p>
+</li>
+<li><p>目标时间一般是上次修改的时间+1</p>
+</li>
+<li><p><del>遍历出来全部的记录？！</del>遍历出来某一天的全部数据</p>
+</li>
+<li><p>循环条件为  查询出来的数组大小&gt;0</p>
+</li>
+<li><p>每次最多操作500个数据</p>
+</li>
+<li><p>拿到500个数据后，set一些需要的业务，然后save保存进去就行了</p>
+</li>
+<li><p>循环变量，分割标识符    分别自增自减500</p>
+</li>
+<li><p>循环size结束   去另一个表保存一下最后同步日期</p>
+</li>
+</ol>
+<h2 id="我需要做的"><a href="#我需要做的" class="headerlink" title="我需要做的"></a>我需要做的</h2><ol>
+<li>yml添加两个数据源</li>
+<li>配置类，entity，service，mapper复制过去</li>
+<li>quartz中config跟数据源的配置类放一起，job放task中</li>
+</ol>
+<p>修改的内容</p>
+<ol>
+<li>yml中shenzhang这个数据源存在相同的，就没有复制，等会直接改数据源名字即可</li>
+<li><code>import org.springframework.boot.jdbc.DataSourceBuilder;</code>报红，注释后，自动导包<code>import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;</code></li>
+<li>修改了连接池的大小5–&gt;10</li>
+</ol>
+<h2 id="收获-1"><a href="#收获-1" class="headerlink" title="收获"></a>收获</h2><ol>
+<li><p>SQL Server端口号1443</p>
+</li>
+<li><p>classpath</p>
+<p>使用<code>classpath:</code>这种前缀，<strong>就只能代表一个文件</strong>。</p>
+<p>使用<code>classpath*:</code>这种前缀，<strong>则可以代表多个匹配的文件</strong></p>
+<p>双星号<code>**</code>表示在任意目录下</p>
+<blockquote>
+<p>在编译打包后的项目中，根目录是<code>META-INF</code>和<code>WEB-INF</code> 。这个时候，我们可以看到classes这个文件夹，它就是我们要找的classpath。</p>
+<p>在第1个例子里，<code>classpath:entry/dev/spring-mvc.xml</code> 中，classpath就是指<code>WEB-INF/classes/</code>这个目录的路径。需要声明的一点是，使用<code>classpath:</code>这种前缀，<strong>就只能代表一个文件</strong>。</p>
+<p>在第2个例子里，<code>classpath*:**/mapper/mapping/*Mapper.xml</code>，使用<code>classpath*:</code>这种前缀，<strong>则可以代表多个匹配的文件</strong>；<code>**/mapper/mapping/*Mapper.xml</code>，双星号<code>**</code>表示在任意目录下，也就是说在<code>WEB-INF/classes/</code>下任意层的目录，只要符合后面的文件路径，都会被作为资源文件找到。</p>
+</blockquote>
+</li>
+<li><p>一般日期用单引号当成字符串输入即可，部分系统会自动解析的，然后 <del>mybatis的xml中用这个就可以确保他正确解析日期了#{date,jdbcType=DATE}</del></p>
+</li>
+</ol>
+<h1 id="周三"><a href="#周三" class="headerlink" title="周三"></a>周三</h1><h2 id="下午"><a href="#下午" class="headerlink" title="下午"></a>下午</h2><blockquote>
+<p>报错 unknown source</p>
+<p>思路</p>
+<ol>
+<li>找到if数据源的源码</li>
+<li>动态代理</li>
+<li>invoke</li>
+<li>反射</li>
+<li>注解</li>
+<li>JVM</li>
+</ol>
+</blockquote>
+<p><img src="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211208103441562.png" alt="image-20211208103441562"></p>
+<p>数据源配置不对，分析</p>
+<p><img src="https://gitee.com/wangyi12/pic-bed/raw/master/img/QQ%E6%88%AA%E5%9B%BE20211208171509.png" alt="QQ截图20211208171509"></p>
+<p>最后修改了，yml中环境部分，为 dev</p>
+<p>然后又把mapper.xml从三级目录放到二级目录，就解决了（保哥解决）</p>
+<p>jvm</p>
+<ol>
+<li><p>jvm的位置</p>
+<p>算是一个java虚拟机，运行在操作系统之上，用来运行.class文件的，这也是java一次编译到处运行的核心</p>
+</li>
+<li><p>jvm的体系结构<img src="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211208145509374.png" alt="image-20211208145509374"></p>
+</li>
+<li><p>类加载器</p>
+<p>有三个，</p>
+</li>
+<li><p>双亲委派机制</p>
+</li>
+<li><p>沙箱安全机制</p>
+</li>
+<li><p>Native</p>
+</li>
+<li><p>PC寄存器</p>
+</li>
+<li><p>方法区</p>
+</li>
+<li><p>栈</p>
+</li>
+<li><p>三种JVM</p>
+</li>
+<li><p>堆</p>
+</li>
+<li><p>新生区，老年区</p>
+</li>
+<li><p>永久区</p>
+</li>
+<li><p>堆内存调优</p>
+</li>
+<li><p>GC</p>
+</li>
+<li><p>JMM</p>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+    
+      <div>
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:24px;">-------------一键三连加关注，包包金橙挡不住-------------</div>
+    
+</div>
+      </div>
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>王一
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/2021/12/06/%E7%AC%AC%E4%BA%8C%E5%91%A8/" title="实习日记第二周————你已经会用spring写helloWorld了，接下来我们来整合一个分布式定时任务的数据同步的任务把">http://example.com/2021/12/06/第二周/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%AE%9E%E4%B9%A0%E6%97%A5%E8%AE%B0/" rel="tag"># 实习日记</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/12/05/gitee/" rel="prev" title="gitee">
+      <i class="fa fa-chevron-left"></i> gitee
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC81NDY4Ny8zMTE1OA=="></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%B6%E8%8E%B7"><span class="nav-number">1.1.</span> <span class="nav-text">收获</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%96%91%E9%97%AE"><span class="nav-number">1.1.1.</span> <span class="nav-text">疑问</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B4%E7%90%86%E7%AC%94%E8%AE%B0"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">整理笔记</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9C%80%E8%A6%81%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">需要学习的内容</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%91%A8%E4%B8%80"><span class="nav-number">2.</span> <span class="nav-text">周一</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C"><span class="nav-number">2.1.</span> <span class="nav-text">工作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%96%91%E9%97%AE-1"><span class="nav-number">3.</span> <span class="nav-text">疑问</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%9A%E5%8A%A1%E9%80%BB%E8%BE%91"><span class="nav-number">3.1.</span> <span class="nav-text">业务逻辑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E9%9C%80%E8%A6%81%E5%81%9A%E7%9A%84"><span class="nav-number">3.2.</span> <span class="nav-text">我需要做的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%B6%E8%8E%B7-1"><span class="nav-number">3.3.</span> <span class="nav-text">收获</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%91%A8%E4%B8%89"><span class="nav-number">4.</span> <span class="nav-text">周三</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E5%8D%88"><span class="nav-number">4.1.</span> <span class="nav-text">下午</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王一"
+      src="/images/1.gif">
+  <p class="site-author-name" itemprop="name">王一</p>
+  <div class="site-description" itemprop="description">你进入游戏行业，就是为了让孩子们上瘾，让人们点击广告吗———美食家五叔评《纪念碑谷》</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://zhongshengguji.github.io/" title="GitHub → https:&#x2F;&#x2F;zhongshengguji.github.io&#x2F;" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/zhong-sheng-gu-ji-24" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;zhong-sheng-gu-ji-24" rel="noopener" target="_blank"><i class="gratipay fa-fw"></i>知乎</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/jhfgjhg1" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;jhfgjhg1" rel="noopener" target="_blank"><i class="codiepie fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/82340048" title="B站 → https:&#x2F;&#x2F;space.bilibili.com&#x2F;82340048" rel="noopener" target="_blank"><i class="bold fa-fw"></i>B站</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="link fa-fw"></i>
+      我的学校
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.bilibili.com/" title="https:&#x2F;&#x2F;www.bilibili.com&#x2F;" rel="noopener" target="_blank">B站</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.kfu.edu.cn/" title="http:&#x2F;&#x2F;www.kfu.edu.cn&#x2F;" rel="noopener" target="_blank">开封大学</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.shanghuaxueyuan.com/" title="http:&#x2F;&#x2F;www.shanghuaxueyuan.com&#x2F;" rel="noopener" target="_blank">裳华职业技术中专</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2021-11 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">王一</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">313k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">4:44</span>
+</div>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共95.8k字</span>
+</div>
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">总访客数<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+$(document).ready(function() {
+
+    var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+    var countOffset = 20000;  // 初始化首次数据
+
+    function fixCount() {            
+       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
+        {
+            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
+            clearInterval(int);
+        }                  
+        if ($("#busuanzi_container_site_pv").css("display") != "none")
+        {
+            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // 加上初始数据 
+            clearInterval(int); // 停止检测
+        }  
+    }
+       	
+});
+</script> 
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+</body>
+</html>
