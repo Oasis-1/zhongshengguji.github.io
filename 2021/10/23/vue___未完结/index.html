@@ -22,18 +22,21 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="1逻辑 判断 if 循环 foreach">
+  <meta name="description" content="[TOC] 前端基础逻辑 判断 if 循环 foreach">
 <meta property="og:type" content="article">
-<meta property="og:title" content="破防了">
+<meta property="og:title" content="Vue2.X入门笔记">
 <meta property="og:url" content="http://example.com/2021/10/23/vue___%E6%9C%AA%E5%AE%8C%E7%BB%93/index.html">
 <meta property="og:site_name" content="Oasis">
-<meta property="og:description" content="1逻辑 判断 if 循环 foreach">
+<meta property="og:description" content="[TOC] 前端基础逻辑 判断 if 循环 foreach">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211228083840131.png">
+<meta property="og:image" content="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211228150255902.png">
 <meta property="article:published_time" content="2021-10-23T12:46:25.000Z">
-<meta property="article:modified_time" content="2021-12-10T23:55:54.362Z">
+<meta property="article:modified_time" content="2021-12-28T10:07:40.026Z">
 <meta property="article:author" content="王一">
 <meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211228083840131.png">
 
 <link rel="canonical" href="http://example.com/2021/10/23/vue___%E6%9C%AA%E5%AE%8C%E7%BB%93/">
 
@@ -48,7 +51,7 @@
   };
 </script>
 
-  <title>破防了 | Oasis</title>
+  <title>Vue2.X入门笔记 | Oasis</title>
   
 
 
@@ -186,7 +189,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          破防了
+          Vue2.X入门笔记
         </h1>
 
         <div class="post-meta">
@@ -203,7 +206,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-12-11 07:55:54" itemprop="dateModified" datetime="2021-12-11T07:55:54+08:00">2021-12-11</time>
+                <time title="修改时间：2021-12-28 18:07:40" itemprop="dateModified" datetime="2021-12-28T18:07:40+08:00">2021-12-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -228,14 +231,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>667</span>
+              <span>10k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>9 分钟</span>
             </span>
 
         </div>
@@ -247,7 +250,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="1"><a href="#1" class="headerlink" title="1"></a>1</h1><h2 id="逻辑"><a href="#逻辑" class="headerlink" title="逻辑"></a>逻辑</h2><ul>
+        <p>[TOC]</p>
+<h1 id="前端基础"><a href="#前端基础" class="headerlink" title="前端基础"></a>前端基础</h1><h2 id="逻辑"><a href="#逻辑" class="headerlink" title="逻辑"></a>逻辑</h2><ul>
 <li>判断 if</li>
 <li>循环 foreach</li>
 </ul>
@@ -257,24 +261,74 @@
 <li>浏览器事件：window doucment</li>
 <li>dom事件：增删 遍历 修改节点元素内容</li>
 </ul>
+<p>框架</p>
 <ul>
-<li>jquery</li>
-<li>vue</li>
-<li>react</li>
+<li><p>jquery</p>
+</li>
+<li><p>vue</p>
+</li>
+<li><p>react</p>
+</li>
 </ul>
 <h2 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h2><ul>
 <li>html</li>
-<li>css</li>
+<li>css：难点</li>
+</ul>
+<p>代表框架</p>
+<ul>
+<li>bootstrap </li>
+<li>layui</li>
 </ul>
 <h2 id="通信"><a href="#通信" class="headerlink" title="通信"></a>通信</h2><ul>
-<li>ajax</li>
+<li>ajax（xhr）</li>
+<li>axios</li>
 </ul>
+<p>本质就一个ajax</p>
 <h1 id="前端大纲"><a href="#前端大纲" class="headerlink" title="前端大纲"></a>前端大纲</h1><p>Soc：关注度分离原则</p>
 <p>html+css+js</p>
 <p>网络通信：axios</p>
 <p>页面跳转：vue-router</p>
 <p>状态管理：vuex</p>
 <p>Vue-iec</p>
+<h2 id="历史-MVVM"><a href="#历史-MVVM" class="headerlink" title="历史(MVVM)"></a>历史(MVVM)</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/a4339bad5256">在最初前端开发中，为了完成某个任务，我们首先利用JS从HTML文件中获取DOM元素，随后添加事件，最后进行一系列的JS编程操作。我们姑且把这种开发方式称为“DOM流”吧，“DOM流”的开发方式看起来似乎很简单实用，但是随着业务需求不断变动，你的麻烦就来了，整个代码会变得越来越混乱，无法维护。举个例子，假设现在有一个这样的需求，有一张图片，在被点击时，可以记录下被点击的次数。 这看起来很简单吧， 按照上面提到到开发方式，应该很快就可以搞定。 那么接下来，需求稍微发生了点变动， 要求有两张图片，分别被点击时，可以记录下各自的点击次数。这次似乎也很简单，只需把原先的代码复制粘贴一份就可以了。  那么当这个需求变成五张图片时，你会怎么做？  还是简单复制粘贴吧，这样完全可以完成这个需求，但是你会觉得很别扭，因为你的代码此时变得很臃肿，存在很多重复的过程，但是似乎还在你的忍受范围内。这时候需求又发生了微小的变动，还是五张照片分别记录被点击次数，不过这样单独罗列五张图片似乎太占空间，现在只需要存在一个图片的位置，通过选择按钮来切换被点击的图片。 这时候你可能会奔溃掉，因为要完成这个看似微小的改动，你原先写的大部分代码可能都需要被删掉，甚至是完全清空掉，从零开始写起，更让人郁闷的是，即使耐着性子重新写好了这个需求，一旦又来了新的需求，可能又要重新开始了。这还仅仅是一个单纯的记录点击次数的任务，“DOM流”的开发方式似乎已经出现很大的问题，而在现实的开发中，复杂的业务逻辑和巨大的代码量，更是“DOM流”根本无法承受的。</a></p>
+<p>DOM流存在缺陷的原因，在“DOM流”中其实是把dom当做Model，我们直接从dom中获取数据，随后又改变dom来更新视图，视图和模型其实是混在一起了，代码组织自然很混乱，不易维护。</p>
+</blockquote>
+<p>然后出现了mv模式，数据和视图分离，而MVC、MVVM、 MVP等都是MV*的衍生物</p>
+<blockquote>
+<p><strong>Vue的核心定位并不是一个框架</strong>，设计上也没有完全遵循MVVM模式，可以看到在图中只有State和View两部分， Vue的核心功能强调的是状态到界面的映射，对于代码的结构组织并不重视， 所以单纯只使用其核心功能时，它并不是一个框架，而<strong>更像一个视图模板引擎</strong>，这也是为什么Vue开发者把其命名成读音类似于view的原因。</p>
+</blockquote>
+<blockquote>
+<p>而对于“渐进式”的解释，我在知乎上看到了一个不错的回答，这个答案也被Vue的设计者点了赞。这个回答的角度很好，<strong>主要从与React、Angular的比较来阐述的</strong>，由于本人没怎么用过另外这两个框架，也就不妄加评述，所以仅把回答进行摘录，以供参考。</p>
+<blockquote>
+<p>在我看来，渐进式代表的含义是：主张最少。<br> 每个框架都不可避免会有自己的一些特点，从而会对使用者有一定的要求，这些要求就是主张，主张有强有弱，它的强势程度会影响在业务开发中的使用方式。<br> 比如说，Angular，它两个版本都是强主张的，如果你用它，必须接受以下东西：</p>
+</blockquote>
+<ul>
+<li>必须使用它的模块机制- 必须使用它的依赖注入- 必须使用它的特殊形式定义组件（这一点每个视图框架都有，难以避免）</li>
+</ul>
+<blockquote>
+<p>所以Angular是带有比较强的排它性的，如果你的应用不是从头开始，而是要不断考虑是否跟其他东西集成，这些主张会带来一些困扰。</p>
+</blockquote>
+<blockquote>
+<p>比如React，它也有一定程度的主张，它的主张主要是函数式编程的理念，比如说，你需要知道什么是副作用，什么是纯函数，如何隔离副作用。它的侵入性看似没有Angular那么强，主要因为它是软性侵入。</p>
+</blockquote>
+<blockquote>
+<p>Vue可能有些方面是不如React，不如Angular，但它是渐进的，没有强主张，你可以在原有大系统的上面，把一两个组件改用它实现，当jQuery用；也可以整个用它全家桶开发，当Angular用；还可以用它的视图，搭配你自己设计的整个下层用。你可以在底层数据逻辑的地方用OO和设计模式的那套理念，也可以函数式，都可以，它只是个轻量视图而已，只做了自己该做的事，没有做不该做的事，仅此而已。<br> 渐进式的含义，我的理解是：没有多做职责之外的事。</p>
+</blockquote>
+<p>好了，到这里已经解释完了“渐进式框架”的意思，现在让我们再回过头来看看开头那句话。</p>
+<blockquote>
+<p>Vue.js（读音 /vjuː/，类似于 view） 是一套构建用户界面的渐进式框架。</p>
+</blockquote>
+<p>是不是对Vue有了不一样的感觉，现在也应该知道如何去学习和使用Vue了吧。<strong>在学习中，我们没必要一上来就搞懂Vue的每一个部件和功能，先从核心功能开始学习，逐渐扩展。 同时，在使用中，我们也没有必要把全部件能都拿出来，需要什么用什么就是了，而且也可以把Vue很方便的与其它已有项目或框架相结合。</strong></p>
+<p>[1] <a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=https://cn.udacity.com/course/javascript-design-patterns--ud989">JavaScript 设计模式设计模式-udacity </a><br> [2]  <a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=https://www.baidu.com/link?url=zGC-k4tQUCPjkygTbu7HpkECnu7I53K9LTxxSnPiEbVggSn2fBY_MdI0B1Ajy1iHMWxaTD9RkpxPFOdswYcoP9_5b4Ot7beZgv-q-5l2jcu&wd=&eqid=c87f63fb0000488300000004590807ef">MVC,MVP 和 MVVM的图示 - 阮一峰</a><br> [3] <a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=http://www.tuicool.com/articles/6nEjAjb">Vue 2.0，渐进式前端解决方案-尤雨溪</a><br> [4] <a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=https://www.zhihu.com/question/51907207">Vue2.0 中，“渐进式框架”和“自底向上增量开发的设计”这两个概念是什么？-徐飞</a></p>
+<p>作者：crazy_banana<br>链接：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/a4339bad5256">https://www.jianshu.com/p/a4339bad5256</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+</blockquote>
+<p>我的理解，<strong>vue是把解耦做的最好的一个前端框架</strong></p>
+<p>当你需要他的其他功能时候，都可以一点点的渐进式的添加他的其他组件</p>
+<h3 id="MVVM"><a href="#MVVM" class="headerlink" title="MVVM"></a>MVVM</h3><p>model：前端ajax请求，获取的json</p>
+<p>view：前端的视图</p>
+<p>viewModel：负责转换model中的数据来让数据变得更容易管理和使用</p>
+<p><img src="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211228083840131.png" alt="image-20211228083840131"></p>
 <h2 id="html-略"><a href="#html-略" class="headerlink" title="html 略"></a>html 略</h2><h2 id="css"><a href="#css" class="headerlink" title="css"></a>css</h2><ul>
 <li>SASS:基于Ruby，通过服务端处理，功能强大。解析效率高。需要学习Ruby语言，上手难度高于LESS。</li>
 <li>LESS:基于NodeJS，通过客户端处理，使用简单。功能比 SASS简单，解析效率也低于SASS，但在实际开发中足够了，所以我们后台人员如果需要的话，建议使用LESS。</li>
@@ -297,6 +351,86 @@
 <li>WebPack:模块打包器，主要作用是打包、压缩、合并及按序加载</li>
 </ul>
 <p>nodejs的作者已经准备放弃了，正在开发一个deno，可能是太笨重了</p>
+<h1 id="第一个vue程序"><a href="#第一个vue程序" class="headerlink" title="第一个vue程序"></a>第一个vue程序</h1><p>vue吸收了react和Angular的优点</p>
+<ul>
+<li>虚拟dom（react的新特性）</li>
+<li>mvc模式搬到前端(Angular提出来的)</li>
+</ul>
+<p><code>==</code>表示等同，<code>===</code>表示恒等。<code>==</code>只比较内容，而<code>===</code>既比较内容也比较数据类型。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">100</span> == <span class="string">&quot;100&quot;</span>            <span class="comment">// true</span></span><br><span class="line"><span class="number">1</span> == <span class="literal">true</span>               <span class="comment">// true</span></span><br><span class="line"><span class="literal">null</span> == <span class="literal">null</span>            <span class="comment">// true</span></span><br><span class="line"><span class="literal">undefined</span> == <span class="literal">undefined</span>  <span class="comment">// true</span></span><br><span class="line"><span class="literal">null</span> == <span class="literal">undefined</span>       <span class="comment">// true</span></span><br><span class="line"><span class="literal">true</span> == <span class="string">&quot;20&quot;</span>            <span class="comment">// false</span></span><br><span class="line"><span class="string">&quot;1&quot;</span> == <span class="string">&quot;01&quot;</span>             <span class="comment">// false，此处等号两边值得类型相同，不要再转换类型了！！</span></span><br><span class="line"><span class="literal">NaN</span> == <span class="literal">NaN</span>              <span class="comment">// false，NaN和所有值包括自己都不相等。</span></span><br><span class="line">===</span><br><span class="line"><span class="number">100</span> === <span class="string">&quot;100&quot;</span>            <span class="comment">// false</span></span><br><span class="line"><span class="number">1</span> === <span class="literal">true</span>               <span class="comment">// false</span></span><br><span class="line"><span class="literal">NaN</span> === <span class="literal">NaN</span>              <span class="comment">// false</span></span><br><span class="line"><span class="literal">null</span> === <span class="literal">undefined</span>       <span class="comment">// false</span></span><br><span class="line"><span class="string">&#x27;abc&#x27;</span> === <span class="string">&quot;abc&quot;</span>          <span class="comment">// true</span></span><br><span class="line"><span class="literal">false</span> === <span class="literal">false</span>          <span class="comment">// true</span></span><br><span class="line"><span class="literal">null</span> === <span class="literal">null</span>            <span class="comment">// true</span></span><br><span class="line"><span class="literal">undefined</span> === <span class="literal">undefined</span>  <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;d1&quot;</span>&gt;</span></span><br><span class="line">    wqe</span><br><span class="line">    &#123;&#123;  message&#125;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">       <span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">           <span class="attr">el</span>:<span class="string">&quot;#d1&quot;</span>,</span></span><br><span class="line"><span class="javascript">           <span class="attr">data</span>:&#123;</span></span><br><span class="line"><span class="javascript">               <span class="attr">message</span>: <span class="string">&quot;helloworld&quot;</span></span></span><br><span class="line"><span class="javascript">           &#125;</span></span><br><span class="line"><span class="javascript">       &#125;);</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="vue有七大属性"><a href="#vue有七大属性" class="headerlink" title="vue有七大属性"></a>vue有七大属性</h2><ol>
+<li><p>el，跟jq的$()一样，通过id绑定元素 </p>
+<p><code>v-bind</code></p>
+</li>
+<li><p>data，ajax的data域</p>
+<p><code>v-if</code> <code>v-else</code> <code>v-for</code></p>
+</li>
+<li><p>methods，关于方法（事件）的</p>
+<p><code>v-on:click</code></p>
+</li>
+<li><p>computed，关于属性的</p>
+<p>详情见第七章</p>
+</li>
+</ol>
+<h2 id="逻辑：if和for"><a href="#逻辑：if和for" class="headerlink" title="逻辑：if和for"></a>逻辑：if和for</h2><p>发现一个问题，我刷的网课是2.X的vue，现在已经到3.X了。然后最简单的双向绑定好像都有不同</p>
+<p><code>v-else</code>会寻找最近的一个没有<code>v-if</code>的</p>
+<p>还有一个ifshow之类的是只改变display属性，跟if同样的效果</p>
+<p><code>&#123;&#123;item&#125;&#125;</code>输出json键值对，<code>&#123;&#123;item.a&#125;&#125;</code>取值</p>
+<h2 id="事件：v-on-click"><a href="#事件：v-on-click" class="headerlink" title="事件：v-on:click"></a>事件：v-on:click</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;v1&quot;</span>&gt;</span></span><br><span class="line">        &#123;&#123;message&#125;&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">h1</span> <span class="attr">v-if</span>=<span class="string">&quot;ok&quot;</span>&gt;</span>qqqq<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h1</span> <span class="attr">v-else</span>&gt;</span>wwww<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">&quot;(item,index) in items&quot;</span>&gt;</span>&#123;&#123;item.a&#125;&#125;------&#123;&#123;index&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">v-on:click</span>=<span class="string">&quot;m&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 	&lt;script src=&quot;https://cdn.bootcss.com/vue-router/3.0.1/vue-router.min.js&quot;&gt;&lt;/script&gt; --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> vm=<span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">        <span class="attr">el</span>: <span class="string">&quot;#v1&quot;</span>,</span></span><br><span class="line"><span class="javascript">        <span class="attr">data</span>: &#123;</span></span><br><span class="line"><span class="javascript">            <span class="attr">message</span>: <span class="string">&quot;qwe&quot;</span>,</span></span><br><span class="line"><span class="javascript">            <span class="attr">ok</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="javascript">            <span class="attr">items</span>: [</span></span><br><span class="line"><span class="javascript">                &#123;<span class="attr">a</span>: <span class="number">1</span>&#125;,</span></span><br><span class="line"><span class="javascript">                &#123;<span class="attr">a</span>: <span class="number">2</span>&#125;,</span></span><br><span class="line"><span class="javascript">                &#123;<span class="attr">a</span>: <span class="number">3</span>&#125;,</span></span><br><span class="line"><span class="javascript">                &#123;<span class="attr">a</span>: <span class="number">4</span>&#125;,</span></span><br><span class="line"><span class="javascript">            ]</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">        &#125;,</span></span><br><span class="line"><span class="javascript">        <span class="attr">methods</span>: &#123;</span></span><br><span class="line"><span class="javascript">            <span class="attr">m</span>:<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="built_in">this</span>.$data.ok=<span class="literal">false</span>;</span></span><br><span class="line"><span class="javascript">            &#125;</span></span><br><span class="line"><span class="javascript">        &#125;</span></span><br><span class="line"><span class="javascript">    &#125;);</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="双向绑定"><a href="#双向绑定" class="headerlink" title="双向绑定"></a>双向绑定</h1><p>双向绑定指的是，不刷新页面的前提下，m–&gt;v可以改变页面的内容，v–&gt;m给js中内容</p>
+<ol>
+<li>m–&gt;v使用控制台改变元素的值，观察页面的变化</li>
+<li>v—&gt;m<ol>
+<li>页面输入内容，console.log后台输出</li>
+<li>页面输入的input，textarea，select，然后后台再把内容输出给一个</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;v1&quot;</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">v-model</span>=<span class="string">&quot;message&quot;</span> /&gt;</span></span><br><span class="line">			&#123;&#123;message&#125;&#125;<span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">textarea</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">v-model</span>=<span class="string">&quot;message&quot;</span> &gt;</span><span class="tag">&lt;/<span class="name">textarea</span>&gt;</span> </span><br><span class="line">			&#123;&#123;message&#125;&#125;<span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">select</span> <span class="attr">v-model</span>=<span class="string">&quot;message&quot;</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">option</span> <span class="attr">disabled</span>&gt;</span>--选择--<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">option</span>&gt;</span>A<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">option</span>&gt;</span>B<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">option</span>&gt;</span>C<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">option</span>&gt;</span>D<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">			&#123;&#123;message&#125;&#125;<span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 	&lt;script src=&quot;https://cdn.bootcss.com/vue-router/3.0.1/vue-router.min.js&quot;&gt;&lt;/script&gt; --&gt;</span></span><br><span class="line">	 <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> vm=<span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">			<span class="attr">el</span>: <span class="string">&quot;#v1&quot;</span>,</span></span><br><span class="line"><span class="javascript">			<span class="attr">data</span>: &#123;</span></span><br><span class="line"><span class="javascript">				<span class="attr">message</span>: <span class="string">&quot;qwe&quot;</span>,</span></span><br><span class="line"><span class="javascript">				</span></span><br><span class="line"><span class="javascript">			&#125;</span></span><br><span class="line"><span class="javascript">		&#125;);</span></span><br><span class="line"><span class="javascript">	</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;v1&quot;</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">m</span> <span class="attr">v-for</span>=<span class="string">&quot;(item,index) in items&quot;</span> <span class="attr">v-bind:todo</span>=<span class="string">&quot;item&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">m</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 	&lt;script src=&quot;https://cdn.bootcss.com/vue-router/3.0.1/vue-router.min.js&quot;&gt;&lt;/script&gt; --&gt;</span></span><br><span class="line">	 <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">		Vue.component(<span class="string">&quot;m&quot;</span>,&#123;</span></span><br><span class="line"><span class="javascript">			<span class="attr">props</span>: [<span class="string">&#x27;todo&#x27;</span>],</span></span><br><span class="line"><span class="javascript">			<span class="attr">template</span>:<span class="string">&#x27;&lt;li&gt;&#123;&#123;todo&#125;&#125;&lt;/li&gt;&#x27;</span></span></span><br><span class="line"><span class="javascript">		&#125;)</span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> vm=<span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">			<span class="attr">el</span>: <span class="string">&quot;#v1&quot;</span>,</span></span><br><span class="line"><span class="javascript">			<span class="attr">data</span>: &#123;</span></span><br><span class="line"><span class="javascript">				<span class="attr">items</span>: [<span class="string">&#x27;q&#x27;</span>,<span class="string">&#x27;w&#x27;</span>,<span class="string">&#x27;e&#x27;</span>,<span class="string">&#x27;r&#x27;</span>,<span class="string">&#x27;t&#x27;</span>],</span></span><br><span class="line"><span class="javascript">			&#125;</span></span><br><span class="line"><span class="javascript">		&#125;);</span></span><br><span class="line"><span class="javascript">	</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="axios"><a href="#axios" class="headerlink" title="axios"></a>axios</h1><p>是一个新的框架，因为vue的作者（尤雨溪）严格遵守Soc关注点分离原则，所以vue是不带通信的模块的，需要自己整合，可以使用</p>
+<ul>
+<li><p>jquery.ajax</p>
+<p>不推荐使用，因为频繁操作dom</p>
+</li>
+<li><p>vue-resource插件</p>
+<p>进入2.0后就停止维护了</p>
+</li>
+<li><p>axios推荐使用</p>
+</li>
+</ul>
+<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><p>谷歌浏览器<code>console.log()</code>无法输出任何东西</p>
+<p>可能是缓存问题，换个edge浏览器正常运行。问题解决了，但原因不明，待定，以后再解决</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;v1&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">v-bind:href</span>=<span class="string">&quot;info.url&quot;</span>&gt;</span>百度<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;&#123;info.address&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">&quot;item in info.links&quot;</span>&gt;</span>&#123;&#123;item.name&#125;&#125;————<span class="tag">&lt;<span class="name">a</span> <span class="attr">v-bind:href</span>=<span class="string">&quot;item.url&quot;</span>&gt;</span>&#123;&#123;item.name&#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span> <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 	&lt;script src=&quot;https://cdn.bootcss.com/vue-router/3.0.1/vue-router.min.js&quot;&gt;&lt;/script&gt; --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/axios/dist/axios.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> vm=<span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">        <span class="attr">el</span>: <span class="string">&quot;#v1&quot;</span>,</span></span><br><span class="line"><span class="javascript">        <span class="function"><span class="title">data</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="javascript">                <span class="attr">info</span>:&#123;</span></span><br><span class="line"><span class="javascript">                    <span class="attr">name</span>: <span class="literal">null</span>,</span></span><br><span class="line"><span class="javascript">                    <span class="attr">url</span>: <span class="literal">null</span>,</span></span><br><span class="line"><span class="javascript">                    <span class="attr">page</span>: <span class="literal">null</span>,</span></span><br><span class="line"><span class="javascript">                    <span class="attr">isNonProfit</span>:<span class="literal">null</span>,</span></span><br><span class="line"><span class="javascript">                    <span class="attr">address</span>: &#123;</span></span><br><span class="line"><span class="javascript">                        <span class="attr">street</span>: <span class="literal">null</span>,</span></span><br><span class="line"><span class="javascript">                        <span class="attr">city</span>: <span class="literal">null</span>,</span></span><br><span class="line"><span class="javascript">                        <span class="attr">country</span>: <span class="literal">null</span></span></span><br><span class="line"><span class="javascript">                    &#125;,</span></span><br><span class="line"><span class="javascript">                    <span class="attr">links</span>: [</span></span><br><span class="line"><span class="javascript">                        &#123;</span></span><br><span class="line"><span class="javascript">                            <span class="attr">name</span>: <span class="literal">null</span>,</span></span><br><span class="line"><span class="javascript">                            <span class="attr">url</span>: <span class="literal">null</span></span></span><br><span class="line"><span class="javascript">                        &#125;,</span></span><br><span class="line"><span class="javascript">                        &#123;</span></span><br><span class="line"><span class="javascript">                            <span class="attr">name</span>: <span class="literal">null</span>,</span></span><br><span class="line"><span class="javascript">                            <span class="attr">url</span>: <span class="literal">null</span></span></span><br><span class="line"><span class="javascript">                        &#125;,</span></span><br><span class="line"><span class="javascript">                        &#123;</span></span><br><span class="line"><span class="javascript">                            <span class="attr">name</span>: <span class="literal">null</span>,</span></span><br><span class="line"><span class="javascript">                            <span class="attr">url</span>: <span class="literal">null</span></span></span><br><span class="line"><span class="javascript">                        &#125;</span></span><br><span class="line"><span class="javascript">                    ]</span></span><br><span class="line"><span class="javascript">                &#125;</span></span><br><span class="line"><span class="javascript">            &#125;</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">        &#125;,</span></span><br><span class="line"><span class="javascript">        <span class="comment">// 钩子函数，链式编程，es6的新特性</span></span></span><br><span class="line"><span class="javascript">        <span class="function"><span class="title">mounted</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">            axios.get(<span class="string">&#x27;../q.json&#x27;</span>).then(<span class="function"><span class="params">response</span>=&gt;</span>(<span class="built_in">this</span>.info=response.data))</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">        &#125;</span></span><br><span class="line"><span class="javascript">        <span class="comment">// mounted: function () &#123;</span></span></span><br><span class="line"><span class="javascript">        <span class="comment">//     axios.get(&#x27;../q.json&#x27;).then(function(data)&#123;</span></span></span><br><span class="line"><span class="javascript">        <span class="comment">//         console.log(data);</span></span></span><br><span class="line"><span class="javascript">        <span class="comment">//         console.log(&quot;qwewqe&quot;);</span></span></span><br><span class="line"><span class="javascript">        <span class="comment">//         console.log(&quot;qwe&quot;);</span></span></span><br><span class="line"><span class="javascript">        <span class="comment">//     &#125;)</span></span></span><br><span class="line"><span class="javascript">        <span class="comment">//     console.log(&quot;qwewqe&quot;);</span></span></span><br><span class="line"><span class="javascript">        <span class="comment">// &#125;</span></span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    &#125;);</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>好像是引入的vue源码有问题，或者是我现在学的vue的版本和引入的版本有小版本的差别</p>
+<p><img src="https://gitee.com/wangyi12/pic-bed/raw/master/img/image-20211228150255902.png" alt="image-20211228150255902"></p>
+<h1 id="计算属性"><a href="#计算属性" class="headerlink" title="计算属性"></a>计算属性</h1><p>计算属性是为了将不经常变化的计算结果进行<strong>缓存</strong>，已节省我们的开销</p>
+<ol>
+<li><p>methods:定义方法，调用方法的时候使用<code>ctime()</code>需要带括号</p>
+</li>
+<li><p>computed:定义属性，调用属性使用ctime不用括号</p>
+</li>
+<li><p>如果在方法中的值发生了变化，则缓存会刷新，可以在控制台使用<code>vm.message=&quot;wwwwwwwwwwww&quot;</code></p>
+<p>每次刷新两个都会发生变化</p>
+<p>控制台输出的话，属性是固定的，方法会一直更新</p>
+<p>当方法中有<code>this.message;</code>改变data里的值之后，不刷新页面，在控制台使用<code>vm.message=&quot;w&quot;</code>再控制台输出，属性就会变成另一个不会变的数值</p>
+</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;pro&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123;ctime()&#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123;ctime2&#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> vm=<span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">        <span class="attr">el</span>: <span class="string">&quot;#pro&quot;</span>,</span></span><br><span class="line"><span class="javascript">        <span class="attr">data</span>: &#123;</span></span><br><span class="line"><span class="javascript">          <span class="attr">message</span>:<span class="string">&quot;qwe&quot;</span>,</span></span><br><span class="line"><span class="javascript">        &#125;,</span></span><br><span class="line"><span class="javascript">        <span class="attr">methods</span>: &#123;</span></span><br><span class="line"><span class="javascript">            <span class="attr">ctime</span>:<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">return</span> <span class="built_in">Date</span>.now();</span></span><br><span class="line"><span class="javascript">            &#125;</span></span><br><span class="line"><span class="javascript">        &#125;,</span></span><br><span class="line"><span class="javascript">        <span class="attr">computed</span>: &#123;</span></span><br><span class="line"><span class="javascript">            <span class="attr">ctime2</span>:<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="built_in">this</span>.message;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">return</span> <span class="built_in">Date</span>.now();</span></span><br><span class="line"><span class="javascript">            &#125;</span></span><br><span class="line"><span class="javascript">        &#125;</span></span><br><span class="line"><span class="javascript">    &#125;)</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="插槽"><a href="#插槽" class="headerlink" title="插槽"></a>插槽</h1><blockquote>
+<p>在 2.6.0 中，我们为具名插槽和作用域插槽引入了一个新的统一的语法 (即 <code>v-slot</code> 指令)。它取代了 <code>slot</code> 和 <code>slot-scope</code> 这两个目前已被废弃但未被移除且仍在<a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/guide/components-slots.html#%E5%BA%9F%E5%BC%83%E4%BA%86%E7%9A%84%E8%AF%AD%E6%B3%95">文档中</a>的 attribute。新语法的由来可查阅这份 <a target="_blank" rel="noopener" href="https://github.com/vuejs/rfcs/blob/master/active-rfcs/0001-new-slot-syntax.md">RFC</a>。</p>
+</blockquote>
+<p>课程里的好像被淘汰了，等后面再自学</p>
 
     </div>
 
@@ -321,7 +455,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://example.com/2021/10/23/vue___%E6%9C%AA%E5%AE%8C%E7%BB%93/" title="破防了">http://example.com/2021/10/23/vue___未完结/</a>
+    <a href="http://example.com/2021/10/23/vue___%E6%9C%AA%E5%AE%8C%E7%BB%93/" title="Vue2.X入门笔记">http://example.com/2021/10/23/vue___未完结/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -411,7 +545,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1"><span class="nav-number">1.</span> <span class="nav-text">1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%BB%E8%BE%91"><span class="nav-number">1.1.</span> <span class="nav-text">逻辑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6"><span class="nav-number">1.2.</span> <span class="nav-text">事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%86%E5%9B%BE"><span class="nav-number">1.3.</span> <span class="nav-text">视图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E4%BF%A1"><span class="nav-number">1.4.</span> <span class="nav-text">通信</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF%E5%A4%A7%E7%BA%B2"><span class="nav-number">2.</span> <span class="nav-text">前端大纲</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#html-%E7%95%A5"><span class="nav-number">2.1.</span> <span class="nav-text">html 略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#css"><span class="nav-number">2.2.</span> <span class="nav-text">css</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js"><span class="nav-number">2.3.</span> <span class="nav-text">js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ui%E6%A1%86%E6%9E%B6"><span class="nav-number">2.4.</span> <span class="nav-text">ui框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7"><span class="nav-number">2.5.</span> <span class="nav-text">js构建工具</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">前端基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%BB%E8%BE%91"><span class="nav-number">1.1.</span> <span class="nav-text">逻辑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6"><span class="nav-number">1.2.</span> <span class="nav-text">事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%86%E5%9B%BE"><span class="nav-number">1.3.</span> <span class="nav-text">视图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E4%BF%A1"><span class="nav-number">1.4.</span> <span class="nav-text">通信</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF%E5%A4%A7%E7%BA%B2"><span class="nav-number">2.</span> <span class="nav-text">前端大纲</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%86%E5%8F%B2-MVVM"><span class="nav-number">2.1.</span> <span class="nav-text">历史(MVVM)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MVVM"><span class="nav-number">2.1.1.</span> <span class="nav-text">MVVM</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#html-%E7%95%A5"><span class="nav-number">2.2.</span> <span class="nav-text">html 略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#css"><span class="nav-number">2.3.</span> <span class="nav-text">css</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js"><span class="nav-number">2.4.</span> <span class="nav-text">js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ui%E6%A1%86%E6%9E%B6"><span class="nav-number">2.5.</span> <span class="nav-text">ui框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7"><span class="nav-number">2.6.</span> <span class="nav-text">js构建工具</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E4%B8%AAvue%E7%A8%8B%E5%BA%8F"><span class="nav-number">3.</span> <span class="nav-text">第一个vue程序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#vue%E6%9C%89%E4%B8%83%E5%A4%A7%E5%B1%9E%E6%80%A7"><span class="nav-number">3.1.</span> <span class="nav-text">vue有七大属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%EF%BC%9Aif%E5%92%8Cfor"><span class="nav-number">3.2.</span> <span class="nav-text">逻辑：if和for</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%EF%BC%9Av-on-click"><span class="nav-number">3.3.</span> <span class="nav-text">事件：v-on:click</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A"><span class="nav-number">4.</span> <span class="nav-text">双向绑定</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%84%E4%BB%B6"><span class="nav-number">5.</span> <span class="nav-text">组件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#axios"><span class="nav-number">6.</span> <span class="nav-text">axios</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">6.1.</span> <span class="nav-text">遇到的问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7"><span class="nav-number">7.</span> <span class="nav-text">计算属性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8F%92%E6%A7%BD"><span class="nav-number">8.</span> <span class="nav-text">插槽</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -427,7 +561,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">52</span>
+          <span class="site-state-item-count">54</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -440,7 +574,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-count">36</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -497,7 +631,7 @@
 <div class="copyright">
   
   &copy; 2021-11 – 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -506,16 +640,16 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">389k</span>
+    <span title="站点总字数">413k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">5:54</span>
+    <span title="站点阅读时长">6:15</span>
 </div>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共138.4k字</span>
+  <span class="post-count">博客全站共147.9k字</span>
 </div>
 
     <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
